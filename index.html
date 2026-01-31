@@ -1,13 +1,92 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Organization</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Institute of Property Agents – Kenya</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body style="font-family: Arial, sans-serif; padding: 32px;">
-  <h1>Welcome 👋</h1>
-  <p>This is my new .org website.</p>
-  <p>More content coming soon.</p>
+
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <div class="brand">Institute of Property Agents – Kenya</div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#services">What We Do</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Institute of Property Agents – Kenya</h1>
+        <p class="lead">
+          Promoting ethical, professional, and transparent real estate practice through certification and public verification.
+        </p>
+        <p class="tagline">Commonly known as <strong>IPAK Kenya</strong>.</p>
+
+        <div class="cta-row">
+          <a class="btn" href="#contact">Get in touch</a>
+          <a class="btn btn-outline" href="#services">See what we do</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About</h2>
+        <p>
+          We support and advance professional property practice in Kenya by promoting standards, strengthening
+          accountability, and helping the public verify qualified practitioners.
+        </p>
+      </div>
+    </section>
+
+    <section id="services" class="section alt">
+      <div class="container">
+        <h2>What We Do</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Certification</h3>
+            <p>Support professional certification pathways and ongoing development for practitioners.</p>
+          </div>
+          <div class="card">
+            <h3>Public Verification</h3>
+            <p>Enable the public to confirm registered/verified agents and promote transparency.</p>
+          </div>
+          <div class="card">
+            <h3>Ethics & Standards</h3>
+            <p>Promote ethical conduct, professional standards, and responsible real estate practice.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Contact</h2>
+        <p>Share your email/phone/location here. We can add a contact form next.</p>
+
+        <div class="contact-box">
+          <p><strong>Email:</strong> yourname@example.com</p>
+          <p><strong>Phone:</strong> +254 xxx xxx xxx</p>
+          <p><strong>Location:</strong> Nairobi, Kenya</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> Institute of Property Agents – Kenya. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
