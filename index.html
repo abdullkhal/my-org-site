@@ -31,9 +31,9 @@
           </p>
 
           <div class="cta-row">
-            <a class="btn" href="#verify">Verify a practitioner</a>
-            <a class="btn btn-outline" href="#contact">Membership enquiries</a>
-          </div>
+  <a class="btn" href="#membership-apply">Apply for Membership</a>
+  <a class="btn btn-outline" href="#verify">Request Verification</a>
+</div>
 
           <!-- Verification feature (UI now; can become real later) -->
           <div id="verify" class="verify-box">
@@ -42,7 +42,7 @@
 
             <div class="verify-row">
               <input class="input" type="text" placeholder="e.g., Jane Doe / +2547xx… / CERT-12345" disabled />
-              <a class="btn" href="#contact">Request verification</a>
+             <a class="btn" href="#membership-apply">Membership application</a>
             </div>
 
             <div class="note">
@@ -70,6 +70,38 @@
         </div>
       </div>
     </section>
+<section class="section">
+  <div class="container">
+    <h2>Membership Path</h2>
+    <p class="muted">A clear, professional route for ethical practitioners who want to demonstrate integrity and accountability.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h3>Apply</h3>
+          <p>Share your details and practice area. We’ll confirm your application and next steps.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h3>Review</h3>
+          <p>We review submitted information against PIIK standards and integrity expectations.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h3>Recognition</h3>
+          <p>Successful applicants can be listed for public reference as programs and verification expand.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- ABOUT -->
     <section id="about" class="section">
@@ -213,6 +245,59 @@
         </div>
       </div>
     </section>
+
+    <section id="membership-apply" class="section alt">
+  <div class="container">
+    <h2>Membership Application</h2>
+    <p class="muted">
+      Start your membership application. We’ll respond with next steps and required documents.
+    </p>
+
+    <div class="form-card">
+      <form action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
+        <div class="form-grid">
+          <div>
+            <label class="label">Full name</label>
+            <input class="input" type="text" name="name" required placeholder="Your full name">
+          </div>
+
+          <div>
+            <label class="label">Email</label>
+            <input class="input" type="email" name="email" required placeholder="you@example.com">
+          </div>
+
+          <div>
+            <label class="label">Phone (optional)</label>
+            <input class="input" type="text" name="phone" placeholder="+254...">
+          </div>
+
+          <div>
+            <label class="label">Role</label>
+            <select class="input" name="role" required>
+              <option value="">Select</option>
+              <option>Real estate agent</option>
+              <option>Property marketer</option>
+              <option>Broker / agency owner</option>
+              <option>Developer / landlord</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-wide">
+            <label class="label">Message (practice area / location)</label>
+            <textarea class="input" name="message" rows="4" placeholder="Tell us your location and practice area"></textarea>
+          </div>
+        </div>
+
+        <input type="hidden" name="subject" value="New PIIK membership application">
+        <button class="btn" type="submit">Submit application</button>
+        <p class="note">
+          By submitting, you confirm information is accurate. PIIK is a voluntary professional body and not a statutory regulator.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
 
     <!-- CONTACT -->
     <section id="contact" class="section alt">
