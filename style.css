@@ -76,7 +76,7 @@ body{
   inset:0;
   /* Make image MORE visible by reducing the white overlay */
   background:
-    linear-gradient(180deg, rgba(236,254,255,0.72), rgba(255,255,255,0.80)),
+    linear-gradient(180deg, rgba(236,254,255,0.60), rgba(255,255,255,0.72)),
     url("assets/hero-nairobi.jpg");
   background-size: cover;
   background-position: center;
