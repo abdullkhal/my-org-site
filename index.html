@@ -14,104 +14,240 @@
       <nav class="nav">
         <a href="#about">About</a>
         <a href="#focus">What We Do</a>
+        <a href="#resources">Resources</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
-   <section class="hero hero-with-image">
-  <div class="container hero-inner">
-    <div class="hero-copy">
-      <h1>Property Integrity Institute – Kenya</h1>
-      <p class="lead">
-        Promoting ethical, professional, and transparent real estate practice through voluntary certification
-        and public verification.
-      </p>
+    <!-- HERO -->
+    <section class="hero hero-with-image">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>Property Integrity Institute – Kenya</h1>
+          <p class="lead">
+            Promoting ethical, professional, and transparent real estate practice through voluntary certification and public verification.
+          </p>
 
-      <div class="cta-row">
-        <a class="btn" href="#contact">Contact us</a>
-        <a class="btn btn-outline" href="#focus">What we do</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-    <section id="about" class="section">
-      <div class="container">
-        <h2>About Us</h2>
-
-        <h3>Who we are</h3>
-        <p>
-          The Property Integrity Institute – Kenya (PIIK) is an independent, membership-based professional body
-          established to promote ethical conduct, professionalism, and accountability in real estate agency
-          and property marketing.
-        </p>
-
-        <h3>Why we exist</h3>
-        <p>
-          Kenya’s real estate sector has grown rapidly, but the absence of consistent professional standards has
-          exposed the public to fraud, misinformation, and unethical practices. PIIK exists to bridge this gap
-          through voluntary certification and public verification.
-        </p>
-
-        <h3>What we are not</h3>
-        <p>
-          PIIK does not license agents, regulate the industry, or exercise statutory authority. Membership and
-          certification are voluntary and based on adherence to our professional standards.
-        </p>
-      </div>
-    </section>
-
-    <section id="focus" class="section alt">
-      <div class="container">
-        <h2>What We Do</h2>
-        <div class="grid">
-          <div class="card">
-            <h3>Voluntary Certification</h3>
-            <p>
-              Support ethical practitioners through voluntary certification aligned with professional integrity
-              and transparency.
-            </p>
+          <div class="cta-row">
+            <a class="btn" href="#verify">Verify a practitioner</a>
+            <a class="btn btn-outline" href="#contact">Membership enquiries</a>
           </div>
 
-          <div class="card">
-            <h3>Public Verification</h3>
-            <p>
-              Enable the public to verify participating practitioners and make informed property decisions.
-            </p>
-          </div>
+          <!-- Verification feature (UI now; can become real later) -->
+          <div id="verify" class="verify-box">
+            <strong>Public Verification</strong>
+            <div class="muted">Search by name, phone number, or certificate ID (coming soon).</div>
 
-          <div class="card">
-            <h3>Standards & Ethics</h3>
-            <p>
-              Promote ethical conduct, accountability, and best practices across real estate agency and
-              property marketing.
-            </p>
+            <div class="verify-row">
+              <input class="input" type="text" placeholder="e.g., Jane Doe / +2547xx… / CERT-12345" disabled />
+              <a class="btn" href="#contact">Request verification</a>
+            </div>
+
+            <div class="note">
+              We will publish verification results only when our verification system is live. For now, you can request manual verification via email.
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section">
+    <!-- TRUST STRIP -->
+    <section class="trust-strip">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <h3>Integrity</h3>
+          <p>Clear professional conduct standards focused on honesty and accountability.</p>
+        </div>
+        <div class="trust-item">
+          <h3>Voluntary Certification</h3>
+          <p>Certification based on adherence to defined professional standards.</p>
+        </div>
+        <div class="trust-item">
+          <h3>Public Verification</h3>
+          <p>Helping the public confirm participating practitioners and reduce fraud risk.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2>About Us</h2>
+        <p class="muted">An independent, membership-based professional body focused on integrity in real estate practice.</p>
+
+        <h3>Who we are</h3>
+        <p>
+          The Property Integrity Institute – Kenya (PIIK) is an independent, membership-based professional body established to promote ethical conduct,
+          professionalism, and accountability in real estate agency and property marketing.
+        </p>
+
+        <h3>Why we exist</h3>
+        <p>
+          Kenya’s real estate sector has grown rapidly, but the absence of consistent professional standards has exposed the public to fraud,
+          misinformation, and unethical practices. PIIK exists to bridge this gap through voluntary certification and public verification.
+        </p>
+
+        <h3>What we are not</h3>
+        <p>
+          PIIK does not license agents, regulate the industry, or exercise statutory authority. Membership and certification are voluntary and based on
+          adherence to our professional standards.
+        </p>
+
+        <div class="section-media">
+          <img src="assets/about-training.jpg" alt="Professional standards and training">
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>Standards</strong>
+            <span>Clear, practical, ethics-led principles</span>
+          </div>
+          <div class="stat">
+            <strong>Verification</strong>
+            <span>Public-facing confirmation pathway</span>
+          </div>
+          <div class="stat">
+            <strong>Trust</strong>
+            <span>Improving confidence in property decisions</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT WE DO -->
+    <section id="focus" class="section alt">
+      <div class="container">
+        <h2>What We Do</h2>
+        <p class="muted">Practical initiatives designed to reduce fraud risk and strengthen professionalism.</p>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Voluntary Certification</h3>
+            <p>Support ethical practitioners through voluntary certification aligned with integrity and transparency.</p>
+          </div>
+
+          <div class="card">
+            <h3>Public Verification</h3>
+            <p>Provide a pathway for the public to confirm participating practitioners before committing funds.</p>
+          </div>
+
+          <div class="card">
+            <h3>Standards & Ethics</h3>
+            <p>Promote accountability and responsible marketing practices across the real estate sector.</p>
+          </div>
+        </div>
+
+        <div class="section-media">
+          <img src="assets/verification.jpg" alt="Verification and transparency">
+        </div>
+      </div>
+    </section>
+
+    <!-- STAKEHOLDER “TESTIMONIALS” (ethical, not fake) -->
+    <section class="section">
+      <div class="container">
+        <h2>What Stakeholders Want</h2>
+        <p class="muted">
+          These reflect real priorities we hear in the market. We will publish verified testimonials as programs and verification expand.
+        </p>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Home buyers</h3>
+            <p>“A simple way to verify who I’m dealing with before paying deposits.”</p>
+          </div>
+          <div class="card">
+            <h3>Landlords & developers</h3>
+            <p>“Clear standards that reduce disputes and improve service consistency.”</p>
+          </div>
+          <div class="card">
+            <h3>Ethical practitioners</h3>
+            <p>“A credible pathway to demonstrate professionalism and integrity.”</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section id="resources" class="section alt">
+      <div class="container">
+        <h2>Resources</h2>
+        <p class="muted">Short, practical guidance for safer property transactions (we can expand this over time).</p>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Red flags checklist</h3>
+            <p>How to spot suspicious listings, pressure tactics, and unverifiable identities.</p>
+          </div>
+          <div class="card">
+            <h3>Verification guide</h3>
+            <p>What to request from an agent and how to confirm details before payments.</p>
+          </div>
+          <div class="card">
+            <h3>Ethics & conduct</h3>
+            <p>Clear expectations for marketing, communication, and handling client funds.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <div class="container">
+        <h2>FAQ</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Are you a regulator?</h3>
+            <p>No. PIIK is not a licensing authority and does not exercise statutory regulation.</p>
+          </div>
+          <div class="card">
+            <h3>Is membership compulsory?</h3>
+            <p>No. Membership and certification are voluntary and based on adherence to standards.</p>
+          </div>
+          <div class="card">
+            <h3>How do I verify someone today?</h3>
+            <p>Use the “Request verification” option and contact us with the person’s details.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section alt">
       <div class="container">
         <h2>Contact</h2>
-        <p>
-          For enquiries, partnerships, or membership information, please contact us:
-        </p>
+        <p class="muted">For verification requests, partnerships, or membership enquiries:</p>
 
         <div class="contact-box">
           <p><strong>Email:</strong> info@piikkenya.com</p>
-          <p><strong>Location:</strong> Kenya</p>
+          <p><strong>Location:</strong> Kenya (Nairobi)</p>
+          <p class="muted">We can add a proper contact form next (email capture + membership form).</p>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container">
-      <p>© <span id="year"></span> Property Integrity Institute – Kenya. All rights reserved.</p>
+    <div class="container footer-grid">
+      <div>
+        <strong>Property Integrity Institute – Kenya (PIIK)</strong>
+        <div class="muted">Promoting ethical, professional, and transparent real estate practice.</div>
+      </div>
+
+      <div>
+        <strong>Quick links</strong><br>
+        <a href="#about">About</a><br>
+        <a href="#focus">What We Do</a><br>
+        <a href="#resources">Resources</a>
+      </div>
+
+      <div>
+        <strong>Contact</strong><br>
+        <a href="mailto:info@piikkenya.com">info@piikkenya.com</a><br>
+        <span class="muted">© <span id="year"></span></span>
+      </div>
     </div>
   </footer>
 
