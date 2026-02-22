@@ -58,35 +58,51 @@
         </div>
       </div>
     </section>
-<section class="section">
+<section id="verification" class="section">
   <div class="container">
-    <h2>Membership Path</h2>
-    <p class="muted">A clear, professional route for ethical practitioners who want to demonstrate integrity and accountability.</p>
+    <h2>Public Verification</h2>
+    <p class="muted">
+      Verify a practitioner before committing funds. Submit a request and our team will review the information provided.
+    </p>
 
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div>
-          <h3>Apply</h3>
-          <p>Share your details and practice area. We’ll confirm your application and next steps.</p>
-        </div>
-      </div>
+    <div class="form-card">
+      <form action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST">
+        <div class="form-grid">
 
-      <div class="step">
-        <div class="step-num">2</div>
-        <div>
-          <h3>Review</h3>
-          <p>We review submitted information against PIIK standards and integrity expectations.</p>
-        </div>
-      </div>
+          <div>
+            <label class="label">Practitioner name</label>
+            <input class="input" name="practitioner_name" required placeholder="Full name">
+          </div>
 
-      <div class="step">
-        <div class="step-num">3</div>
-        <div>
-          <h3>Recognition</h3>
-          <p>Successful applicants can be listed for public reference as programs and verification expand.</p>
+          <div>
+            <label class="label">Phone number (optional)</label>
+            <input class="input" name="phone" placeholder="+254...">
+          </div>
+
+          <div>
+            <label class="label">Agency / Company (optional)</label>
+            <input class="input" name="company" placeholder="Agency name">
+          </div>
+
+          <div>
+            <label class="label">Your email</label>
+            <input class="input" type="email" name="email" required placeholder="you@example.com">
+          </div>
+
+          <div class="form-wide">
+            <label class="label">Details to verify</label>
+            <textarea class="input" name="notes" rows="4" placeholder="Property location, listing link, or concerns"></textarea>
+          </div>
+
         </div>
-      </div>
+
+        <input type="hidden" name="subject" value="Verification request — PIIK Kenya">
+        <button class="btn" type="submit">Submit verification request</button>
+
+        <p class="note">
+          PIIK is a voluntary professional body and not a statutory regulator.
+        </p>
+      </form>
     </div>
   </div>
 </section>
