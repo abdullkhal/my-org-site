@@ -3,9 +3,9 @@
   --text:#111827;
   --muted:#6b7280;
   --border:#e5e7eb;
-  --brand:#0f766e;
-  --brand2:#115e59;
-  --alt:#f9fafb;
+--brand:#0b2a5b;   /* navy */
+--brand2:#081f43;  /* darker navy */
+--alt:#f5f8ff;     /* light blue background */
   --shadow: 0 10px 30px rgba(17,24,39,0.10);
 }
 
@@ -76,7 +76,7 @@ body{
   inset:0;
   /* Make image MORE visible by reducing the white overlay */
   background:
-    linear-gradient(180deg, rgba(236,254,255,0.60), rgba(255,255,255,0.72)),
+    linear-gradient(180deg, rgba(11,42,91,0.25), rgba(255,255,255,0.78)),
     url("assets/hero-nairobi.jpg");
   background-size: cover;
   background-position: center;
@@ -165,8 +165,8 @@ h3{ margin: 18px 0 8px; font-size: 18px; }
 
 /* Trust strip */
 .trust-strip{
-  margin-top: -28px;
-  padding-bottom: 18px;
+  margin-top: 0;
+  padding: 18px 0 18px;
 }
 .trust-grid{
   display:grid;
