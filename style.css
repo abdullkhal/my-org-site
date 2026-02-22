@@ -327,3 +327,23 @@ h3{ margin: 18px 0 8px; font-size: 18px; }
   .steps{ grid-template-columns: 1fr; }
   .form-grid{ grid-template-columns: 1fr; }
 }
+/* FIX: Logo sizing in header */
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo{
+  height: 40px;      /* controls size */
+  width: auto;
+  max-width: 160px;  /* prevents huge width */
+  object-fit: contain;
+  display:block;
+}
+
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
