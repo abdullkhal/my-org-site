@@ -76,8 +76,8 @@ body{
   inset:0;
   /* Make image MORE visible by reducing the white overlay */
   background:
-    linear-gradient(180deg, rgba(11,42,91,0.25), rgba(255,255,255,0.78)),
-    url("assets/hero-nairobi.jpg");
+  linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,255,255,0.86)),
+  url("assets/hero-nairobi.jpg");
   background-size: cover;
   background-position: center;
   filter: contrast(1.05) saturate(1.08);
@@ -346,4 +346,23 @@ h3{ margin: 18px 0 8px; font-size: 18px; }
   display:flex;
   align-items:center;
   justify-content:space-between;
+}
+.hero h1{
+  text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+}
+
+.lead{
+  color: #374151; /* darker than muted for hero readability */
+}
+.trust-item{
+  min-height: 110px;
+}
+
+.trust-item h3{
+  font-weight: 800;
+  letter-spacing: -0.2px;
+}
+
+.trust-item p{
+  line-height: 1.5;
 }
