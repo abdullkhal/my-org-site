@@ -109,13 +109,14 @@ body{
   justify-content: flex-end;
   align-items: center;
   position: relative;
+  right: -100px; /* pushes image to far right */
   z-index: 3;
 }
 
 .hero-image img {
   width: 100%;
-  max-width: 580px;
-  height: 360px;
+  max-width: 560px;
+  height: 340px;
   border-radius: 18px;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
   object-fit: cover;
@@ -125,6 +126,11 @@ body{
     min-height: auto;
     padding: 60px 0;
   }
+
+  .hero-image {
+    right: 0;
+  }
+}
 
   .hero-inner {
     grid-template-columns: 1fr;
