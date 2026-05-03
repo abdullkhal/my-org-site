@@ -114,8 +114,8 @@ body{
 
 .hero-image img {
   width: 100%;
-  max-width: 520px;
-  height: 330px;
+  max-width: 580px;
+  height: 360px;
   border-radius: 18px;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
   object-fit: cover;
