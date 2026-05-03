@@ -440,7 +440,7 @@ h3{ margin: 18px 0 8px; font-size: 18px; }
 }
 
 .header-top {
-  padding: 18px 18px 14px;
+  padding: 12px 18px 8px;
 }
 
 .brand-large {
@@ -450,13 +450,13 @@ h3{ margin: 18px 0 8px; font-size: 18px; }
 }
 
 .logo-large {
-  width: 86px;
+  width: 55px;
   height: auto;
   object-fit: contain;
 }
 
 .brand-title {
-  font-size: 26px;
+  font-size: 18px;
   line-height: 1.05;
   font-weight: 800;
   color: var(--brand);
@@ -464,7 +464,7 @@ h3{ margin: 18px 0 8px; font-size: 18px; }
 }
 
 .brand-subtitle {
-  font-size: 20px;
+  font-size: 14px;
   line-height: 1.1;
   font-weight: 700;
   color: var(--brand);
@@ -482,7 +482,7 @@ h3{ margin: 18px 0 8px; font-size: 18px; }
   justify-content: center;
   gap: 24px;
   padding: 14px 18px;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 800;
 }
 
