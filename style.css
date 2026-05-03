@@ -418,14 +418,15 @@ h3{ margin: 18px 0 8px; font-size: 18px; }
 .trust-item p{
   line-height: 1.5;
 }
-.eyebrow {
+..eyebrow {
   display: inline-block;
-  padding: 6px 12px;
+  padding: 8px 14px;
   border: 2px solid #1e3a8a;
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 1px;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
   color: #1e3a8a;
-  margin-bottom: 15px;
+  background: rgba(30, 58, 138, 0.05);
+  margin-bottom: 18px;
 }
