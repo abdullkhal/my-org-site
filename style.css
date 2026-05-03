@@ -91,9 +91,9 @@ body{
 
 .hero-inner {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 40px;
+  gap: 48px;
   position: relative;
   z-index: 2;
 }
@@ -114,9 +114,9 @@ body{
 
 .hero-image img {
   width: 100%;
-  max-width: 360px;
-  height: auto;
-  border-radius: 16px;
+  max-width: 520px;
+  height: 330px;
+  border-radius: 18px;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
   object-fit: cover;
 }
