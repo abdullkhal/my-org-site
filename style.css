@@ -42,7 +42,7 @@ body {
 }
 
 .logo-row {
-  padding: 14px 18px 10px;
+  padding: 18px 18px 14px;
   display: flex;
   align-items: center;
 }
@@ -54,9 +54,9 @@ body {
 
 .site-logo {
   display: block;
-  height: 72px;
+  height: 95px;   /* 🔥 bigger like Liverpool */
   width: auto;
-  max-width: 360px;
+  max-width: 520px; /* allow full text to show */
   object-fit: contain;
 }
 
@@ -428,9 +428,10 @@ h3 {
 
 @media (max-width: 700px) {
   .site-logo {
-    height: 54px;
-    max-width: 280px;
+    height: 70px;
+    max-width: 320px;
   }
+}
 
   .nav-inner {
     justify-content: flex-start;
