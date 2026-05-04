@@ -52,12 +52,19 @@ body {
   align-items: center;
 }
 
+.logo-row {
+  display: flex;
+  justify-content: center; /* center like Liverpool */
+  align-items: center;
+  padding: 26px 18px 18px;
+  background: #ffffff;
+}
+
 .site-logo {
   display: block;
-  height: 95px;   /* 🔥 bigger like Liverpool */
-  width: auto;
-  max-width: 520px; /* allow full text to show */
-  object-fit: contain;
+  width: 100%;
+  max-width: 640px;   /* 🔥 THIS is the key — much bigger */
+  height: auto;
 }
 
 .main-nav {
@@ -428,7 +435,6 @@ h3 {
 
 @media (max-width: 700px) {
   .site-logo {
-    height: 70px;
     max-width: 320px;
   }
 }
