@@ -1,6 +1,8 @@
-# Phase 1 response forms and future integration
+# Deferred response forms and future integration
 
-There are two local-only preview forms: `consumer-form` and `professional-form`. Neither has a working endpoint. No response is sent, persisted or registered. Native validation applies; rendering uses `textContent`, never user-controlled HTML. Each form has explicit labels, a separate acknowledgement and an independently cleared preview. JavaScript-disabled users cannot submit or enter responses.
+**Launch state:** The website now displays two static unavailable-status cards with disabled buttons and no inputs. It contains no enquiry forms or submission-preview JavaScript. Collection is deferred and is not a prerequisite for publishing the informational site.
+
+The following notes describe the earlier review prototype and proposed future integration, not current live functionality. The prototype had two local-only preview forms: `consumer-form` and `professional-form`. Neither has a working endpoint. No response is sent, persisted or registered. Native validation applies; rendering uses `textContent`, never user-controlled HTML. Each form has explicit labels, a separate acknowledgement and an independently cleared preview. JavaScript-disabled users cannot submit or enter responses.
 
 ## Structured data contract
 

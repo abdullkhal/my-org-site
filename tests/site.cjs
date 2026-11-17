@@ -119,13 +119,13 @@ function check(value, label) {
     );
     await page
       .getByRole("link", {
-        name: "Explore professional interest",
+        name: "Registration information",
         exact: false,
       })
       .click();
     check(
       page.url().endsWith("#professional-form"),
-      "network pathway reaches professional response form",
+      "network pathway reaches professional registration status",
     );
 
     const categories = {
@@ -223,74 +223,29 @@ function check(value, label) {
 
     await loadEditorialImages(page);
     const requestCount = requests.length;
+    check(
+      (await page.locator("form").count()) === 0,
+      "no non-submitting enquiry forms are exposed",
+    );
     for (const kind of ["consumer", "professional"]) {
-      const form = page.locator(`#${kind}-form`);
-      const submit = form.getByRole("button", {
-        name: "Review my response",
-        exact: false,
-      });
-      await submit.click();
+      const card = page.locator(`#${kind}-form`);
+      check(await card.isVisible(), `${kind} unavailable status is visible`);
       check(
-        await form.locator(".form-result").isHidden(),
-        `${kind} empty required fields block preview`,
-      );
-      const select = form.locator("select");
-      await select.selectOption({ index: 1 });
-      await submit.click();
-      check(
-        await form.locator(".form-result").isHidden(),
-        `${kind} acknowledgement required`,
-      );
-      await form.locator("input[type=checkbox]").check();
-      await form.locator("input[type=email]").fill("not-an-email");
-      await submit.click();
-      check(
-        await form.locator(".form-result").isHidden(),
-        `${kind} invalid email blocked`,
-      );
-      await form.locator("input[type=email]").fill("review@example.com");
-      await form
-        .locator("textarea")
-        .fill('<img src=x onerror="window.__xss=true">');
-      await submit.click();
-      check(
-        await form.locator(".form-result").isVisible(),
-        `${kind} valid response preview rendered`,
-      );
-      const copy = await form.locator(".form-result").textContent();
-      check(
-        copy.includes("not submitted") && copy.includes("not been registered"),
-        `${kind} preview clearly disclaims submission`,
+        (await card.textContent()).includes("Not accepting online submissions"),
+        `${kind} clearly discloses that submissions are unavailable`,
       );
       check(
-        (await form.locator(".form-result img").count()) === 0 &&
-          !(await page.evaluate(() => window.__xss)),
-        `${kind} user text cannot inject HTML`,
+        (await card.locator("input, select, textarea").count()) === 0,
+        `${kind} has no personal-information fields`,
       );
       check(
-        await form
-          .locator(".form-result")
-          .evaluate((el) => el === document.activeElement),
-        `${kind} preview receives accessible focus`,
-      );
-      await form.locator("textarea").fill("General synthetic feedback");
-      check(
-        await form.locator(".form-result").isHidden(),
-        `${kind} editing clears stale response preview`,
-      );
-      await submit.click();
-      await form
-        .getByRole("button", { name: "Clear my entries", exact: true })
-        .click();
-      check(
-        (await form.locator(".form-result").isHidden()) &&
-          (await form.locator("textarea").inputValue()) === "",
-        `${kind} reset clears entries and preview`,
+        await card.getByRole("button").isDisabled(),
+        `${kind} enquiry or registration button stays disabled with JavaScript`,
       );
     }
     check(
       requests.length === requestCount,
-      "form interaction makes no network requests",
+      "registration status makes no submission requests",
     );
     check(
       requests.every((r) => r.method === "GET" && r.url.startsWith(base)),
@@ -425,8 +380,14 @@ function check(value, label) {
           ".interest-form input:enabled, .interest-form select:enabled, .interest-form textarea:enabled, .interest-form button[type=submit]:enabled",
         )
         .count()) === 0,
-      "forms fail closed without JavaScript",
+      "no active enquiry inputs without JavaScript",
     );
+    for (const kind of ["consumer", "professional"]) {
+      check(
+        await fallback.locator(`#${kind}-form button`).isDisabled(),
+        `${kind} stays disabled without JavaScript`,
+      );
+    }
     await noJs.close();
 
     if (axePath) {

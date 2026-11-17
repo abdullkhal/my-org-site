@@ -1927,6 +1927,18 @@ textarea {
   }
 }
 
+/* Launch: unavailable registration is explicit and collects no personal data. */
+.registration-notice .button:disabled {
+  opacity: 1;
+  background: #e7ebe2;
+  color: #4a5b50;
+  border: 1px solid #c8d0c3;
+  cursor: not-allowed;
+  transform: none;
+}
+.registration-notice .text-link {
+  margin-top: 22px;
+}
 @media print {
   body {
     background: white;

@@ -520,9 +520,8 @@
           </div>
           <div class="hub-notice">
             <strong>Link verification in progress.</strong> Direct links are
-            withheld in this review preview until their official destinations
-            can be checked. These descriptions are guidance, not verification
-            results.
+            withheld until their official destinations can be checked. These
+            descriptions are guidance, not verification results.
           </div>
           <div class="sources-grid">
             <article class="source-card">
@@ -603,7 +602,7 @@
               Help us understand what would make it useful.
             </p>
             <a class="button gold" href="#professional-form"
-              >Explore professional interest
+              >Registration information
               <svg
                 class="icon"
                 viewBox="0 0 24 24"
@@ -883,203 +882,76 @@
         <div class="container">
           <div class="section-heading centered">
             <p class="eyebrow">LET’S BUILD SOMETHING USEFUL</p>
-            <h2>Your experience can shape what comes next.</h2>
+            <h2>Guidance now. Registration later.</h2>
             <p>
-              We’re validating demand before launching. Explore the separate
-              consumer and professional response previews below. Registration is
-              not yet open.
+              We’re in our pre-launch validation stage. Online enquiries and
+              professional registration are not open yet. Our free property
+              guidance is available now.
             </p>
           </div>
           <div class="forms-grid">
-            <form
-              class="interest-form"
+            <article
+              class="interest-form registration-notice"
               id="consumer-form"
-              data-form-type="consumer"
-              aria-describedby="consumer-notice"
+              aria-labelledby="consumer-heading"
             >
               <span class="eyebrow">FOR BUYERS & CONSUMERS</span>
-              <h3>Tell us what would help you</h3>
+              <h3 id="consumer-heading">Consumer enquiries</h3>
               <p>
-                Share your priorities and the gaps you face when exploring
-                property.
+                Online enquiries are not open yet. You can use the free
+                checklists and educational guides without sharing personal
+                information.
               </p>
               <p class="form-notice" id="consumer-notice">
-                <strong>Preview only — registration is not open.</strong>
-                Nothing entered here is sent or saved. A submission service has
-                not been configured.
+                <strong>Not accepting online submissions.</strong> No
+                information is collected or sent from this section. Please do
+                not send sensitive documents.
               </p>
-              <label for="consumer-name">Name <span>(optional)</span></label
-              ><input
+              <button
+                class="button green"
+                type="button"
                 disabled
-                id="consumer-name"
-                name="name"
-                autocomplete="name"
-                maxlength="80"
-                placeholder="How should we address you?"
-              />
-              <label for="consumer-email"
-                >Email <span>(optional in this preview)</span></label
-              ><input
-                disabled
-                id="consumer-email"
-                name="email"
-                type="email"
-                autocomplete="email"
-                maxlength="254"
-                placeholder="you@example.com"
-              />
-              <label for="consumer-goal"
-                >What are you planning? <span>(required)</span></label
-              ><select disabled id="consumer-goal" name="goal" required>
-                <option value="">Select your main interest</option>
-                <option>Buy a home</option>
-                <option>Buy land</option>
-                <option>Invest from abroad</option>
-                <option>Research a property opportunity</option>
-                <option>Learn about property checks</option>
-              </select>
-              <label for="consumer-location"
-                >Where are you based? <span>(optional)</span></label
-              ><input
-                disabled
-                id="consumer-location"
-                name="location"
-                maxlength="100"
-                placeholder="Country or county only"
-              />
-              <label for="consumer-needs"
-                >What is your biggest concern? <span>(optional)</span></label
-              ><textarea
-                disabled
-                id="consumer-needs"
-                name="needs"
-                rows="3"
-                maxlength="600"
-                placeholder="Please keep this general. Do not include personal or property records."
-              ></textarea>
-              <label class="consent" for="consumer-consent"
-                ><input
-                  disabled
-                  id="consumer-consent"
-                  type="checkbox"
-                  name="acknowledgement"
-                  required
-                /><span
-                  >I understand this is a local preview, not a registration or
-                  request for verification. I have read the
-                  <a href="privacy.html">privacy information</a>.</span
-                ></label
+                aria-describedby="consumer-notice"
               >
-              <noscript
-                ><p class="form-notice">
-                  JavaScript is needed to review responses. Registration is not
-                  open; do not enter personal information here.
-                </p></noscript
-              ><button class="button green" type="submit" disabled>
-                Review my response <span aria-hidden="true">→</span>
+                Online enquiries unavailable
               </button>
-              <p class="small">
-                Free to explore. No payments, uploads or sensitive documents.
-              </p>
-              <div class="form-result" role="status" tabindex="-1" hidden></div>
-              <button class="reset-link" type="reset">Clear my entries</button>
-            </form>
-            <form
-              class="interest-form"
+              <p class="small">All initial PIIK services are free.</p>
+              <a class="text-link" href="#piik-check"
+                >Explore the free property checklists →</a
+              >
+            </article>
+            <article
+              class="interest-form registration-notice"
               id="professional-form"
-              data-form-type="professional"
-              aria-describedby="professional-notice"
+              aria-labelledby="professional-heading"
             >
               <span class="eyebrow">FOR PROPERTY PROFESSIONALS</span>
-              <h3>Help shape the professional network</h3>
+              <h3 id="professional-heading">
+                Professional network registration
+              </h3>
               <p>
-                Share your area of work and what useful collaboration would look
-                like.
+                Professional registration is not open yet. We are exploring a
+                free network; no membership, certification or endorsement is
+                granted.
               </p>
               <p class="form-notice" id="professional-notice">
-                <strong>Preview only — registration is not open.</strong>
-                Nothing entered here is sent or saved. A submission service has
-                not been configured.
+                <strong>Not accepting online submissions.</strong> No
+                information is collected or sent from this section. Please do
+                not send sensitive documents.
               </p>
-              <label for="professional-name">Name <span>(optional)</span></label
-              ><input
+              <button
+                class="button green"
+                type="button"
                 disabled
-                id="professional-name"
-                name="name"
-                autocomplete="name"
-                maxlength="80"
-                placeholder="How should we address you?"
-              />
-              <label for="professional-email"
-                >Email <span>(optional in this preview)</span></label
-              ><input
-                disabled
-                id="professional-email"
-                name="email"
-                type="email"
-                autocomplete="email"
-                maxlength="254"
-                placeholder="you@example.com"
-              />
-              <label for="professional-role"
-                >Your profession <span>(required)</span></label
-              ><select disabled id="professional-role" name="role" required>
-                <option value="">Select your profession</option>
-                <option>Estate agent</option>
-                <option>Advocate</option>
-                <option>Surveyor</option>
-                <option>Valuer</option>
-                <option>Developer</option>
-                <option>Property manager</option>
-                <option>Other property professional</option>
-              </select>
-              <label for="professional-location"
-                >Practice location <span>(optional)</span></label
-              ><input
-                disabled
-                id="professional-location"
-                name="location"
-                maxlength="100"
-                placeholder="Country or county only"
-              />
-              <label for="professional-needs"
-                >What would you want from this network?
-                <span>(optional)</span></label
-              ><textarea
-                disabled
-                id="professional-needs"
-                name="needs"
-                rows="3"
-                maxlength="600"
-                placeholder="Please keep this general. Do not include personal or property records."
-              ></textarea>
-              <label class="consent" for="professional-consent"
-                ><input
-                  disabled
-                  id="professional-consent"
-                  type="checkbox"
-                  name="acknowledgement"
-                  required
-                /><span
-                  >I understand this is a local preview, not a registration or
-                  request for verification. I have read the
-                  <a href="privacy.html">privacy information</a>.</span
-                ></label
+                aria-describedby="professional-notice"
               >
-              <noscript
-                ><p class="form-notice">
-                  JavaScript is needed to review responses. Registration is not
-                  open; do not enter personal information here.
-                </p></noscript
-              ><button class="button green" type="submit" disabled>
-                Review my response <span aria-hidden="true">→</span>
+                Registration opening later
               </button>
-              <p class="small">
-                Free to explore. No payments, uploads or sensitive documents.
-              </p>
-              <div class="form-result" role="status" tabindex="-1" hidden></div>
-              <button class="reset-link" type="reset">Clear my entries</button>
-            </form>
+              <p class="small">All initial PIIK services are free.</p>
+              <a class="text-link" href="#network"
+                >About the proposed network →</a
+              >
+            </article>
           </div>
         </div>
       </section>
@@ -1170,7 +1042,7 @@
           <h2>Stay informed</h2>
           <a href="#diaspora">Diaspora Property Hub</a
           ><a href="#knowledge">Knowledge Centre</a
-          ><a href="#feedback">Share your perspective</a>
+          ><a href="#feedback">Enquiries & registration status</a>
         </div>
         <div>
           <h2>Our approach</h2>

@@ -1,5 +1,7 @@
 # Further visual and creative review — 17 November 2026
 
+> Historical review snapshot. The current publication candidate and disabled registration state are documented in [launch readiness](launch-readiness.md).
+
 ## Design outcome
 
 The website moves from an information-first layout to a property-led editorial identity, while retaining the existing positioning, free initial services, pre-launch limitations and all application logic.

@@ -209,58 +209,7 @@ if (menuToggle && navigation) {
   });
 }
 
-// Phase 1 forms are local-only response previews. There is intentionally no
-// action URL, fetch(), localStorage, analytics or claim of successful registration.
-// See docs/forms.md before connecting any future submission service.
-document.querySelectorAll(".interest-form").forEach((form) => {
-  const result = form.querySelector(".form-result");
-  form
-    .querySelectorAll('input, select, textarea, button[type="submit"]')
-    .forEach((control) => {
-      control.disabled = false;
-    });
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    if (!form.reportValidity()) return;
-    const data = new FormData(form);
-    result.replaceChildren();
-    result.append(makeElement("h4", "Response preview — not submitted"));
-    result.append(
-      makeElement(
-        "p",
-        "You have not been registered. Nothing has been sent or saved. Registration will open only after a real submission service and privacy arrangements are configured and tested.",
-      ),
-    );
-    const list = document.createElement("dl");
-    const fields = [
-      ["name", "Name"],
-      ["email", "Email"],
-      ["role", "Profession"],
-      ["goal", "Interest"],
-      ["location", "Location"],
-      ["needs", "Your perspective"],
-    ];
-    fields.forEach(([key, label]) => {
-      const value = data.get(key);
-      if (value && String(value).trim())
-        list.append(
-          makeElement("dt", label),
-          makeElement("dd", String(value).trim()),
-        );
-    });
-    result.append(list);
-    result.hidden = false;
-    result.focus();
-  });
-  form.addEventListener("reset", () => {
-    result.replaceChildren();
-    result.hidden = true;
-  });
-  form.addEventListener("input", () => {
-    // Do not leave a stale preview visible after the response is edited.
-    result.hidden = true;
-    result.replaceChildren();
-  });
-});
+// Online enquiries and registration are intentionally unavailable for launch.
+// Do not enable collection until a real endpoint and privacy arrangements are tested.
 const year = document.querySelector("#year");
 if (year) year.textContent = String(new Date().getFullYear());

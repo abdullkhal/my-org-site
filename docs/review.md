@@ -1,5 +1,7 @@
 # Phase 1 review and validation
 
+> Historical review snapshot. The current publication candidate and disabled registration state are documented in [launch readiness](launch-readiness.md).
+
 ## Purpose and scope
 
 Replace the certification-led site with an honest pre-launch property-integrity initiative. The journeys support consumer education, learning about demand and proposed professional collaboration. All initial PIIK services are free; there is no payment, subscription or paid membership flow.

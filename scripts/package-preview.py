@@ -57,7 +57,8 @@ original photorealistic AI-generated illustrations, not actual listings,
 network members, client stories or documentary city photographs. The credits
 page and visible captions explain their provenance.
 
-Forms remain local-only previews. Nothing is sent, saved or registered.
+Enquiries and registration are unavailable: disabled status cards, no inputs,
+no submissions and no registration claims.
 Official-resource links remain withheld pending verification.
 The source branch is piik-prelaunch-redesign. No merge or deployment occurred.
 ''')
