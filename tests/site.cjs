@@ -6,6 +6,13 @@ const { chromium } = require("playwright");
 const base = process.env.PIIK_TEST_URL || "http://127.0.0.1:3000";
 const output = process.env.PIIK_TEST_OUTPUT || "/tmp/piik-review";
 const axePath = process.env.PIIK_AXE_PATH;
+async function loadEditorialImages(page) {
+  for (const image of await page.locator("img").all()) {
+    await image.scrollIntoViewIfNeeded();
+    await image.evaluate((el) => el.decode());
+  }
+  await page.evaluate(() => window.scrollTo(0, 0));
+}
 let checks = 0;
 function check(value, label) {
   assert.ok(value, label);
@@ -33,6 +40,7 @@ function check(value, label) {
     );
     const response = await page.goto(base, { waitUntil: "networkidle" });
     check(response.status() === 200, "homepage serves successfully");
+    await loadEditorialImages(page);
     check(
       (await page.locator("h1").textContent()).includes("Know what to check."),
       "requested homepage headline",
@@ -84,7 +92,12 @@ function check(value, label) {
       "style.css",
       "app.js",
       "assets/piik-logo.webp",
-      "assets/nairobi-preview.webp",
+      "assets/imagery/residence-1536.webp",
+      "assets/imagery/apartments-1024.webp",
+      "assets/imagery/land-1024.webp",
+      "assets/imagery/collaboration-1024.webp",
+      "assets/imagery/diaspora-1024.webp",
+      "assets/imagery/skyline-1024.webp",
       "assets/favicon.svg",
     ]) {
       const res = await context.request.get(`${base}/${resource}`);
@@ -179,6 +192,10 @@ function check(value, label) {
         (await page.locator(".print-heading").isVisible()),
       "print layout shows checklist and limitations",
     );
+    check(
+      await page.locator(".property-context").isHidden(),
+      "print layout excludes decorative property photography",
+    );
     await page.pdf({
       path: path.join(output, "property-checklist.pdf"),
       format: "A4",
@@ -204,6 +221,7 @@ function check(value, label) {
       );
     }
 
+    await loadEditorialImages(page);
     const requestCount = requests.length;
     for (const kind of ["consumer", "professional"]) {
       const form = page.locator(`#${kind}-form`);
@@ -293,7 +311,7 @@ function check(value, label) {
     );
     check(
       await page.locator(".image-label").isVisible(),
-      "image rights limitation visible",
+      "original generated imagery disclosure visible",
     );
     await page.reload({ waitUntil: "networkidle" });
     check(
@@ -314,6 +332,7 @@ function check(value, label) {
       );
       if (width === 390 || width === 1440) {
         await page.goto(base, { waitUntil: "networkidle" });
+        await loadEditorialImages(page);
         await page.screenshot({
           path: path.join(
             output,

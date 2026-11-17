@@ -12,13 +12,23 @@ Checked: 17 November 2026. Runtime outbound proxy denied the candidate destinati
 
 Do not assume these are confirmed destinations. Use first-party government/regulator references to corroborate identity; follow HTTPS redirects and check the precise register/service page, login and fee requirements before adding links. The five homepage cards intentionally have no dead or misleading “visit” buttons. Update the homepage hub notice, source cards, privacy notice and credits together when verification is completed.
 
-## Imagery
+## Active imagery — original generated editorial artwork
 
-- `assets/logo.png`: supplied PIIK logo retained unmodified. `piik-logo.webp` is a trimmed, resized derivative for web display.
-- `assets/hero-nairobi.jpg`: supplied Nairobi image, photographer/licence not recorded. `nairobi-preview.webp` is a resized WebP derivative, 1200×900. **Preview only; release blocked pending confirmed rights or replacement.** The preview labels its status and links to `credits.html`.
-- Original stock/property images in `assets/` are left untouched, not used by the redesign, and have no newly asserted licences.
-- No screenshot/watermarked reference photograph reused.
-- UI icons/favicon/globe: original simple SVG/CSS geometry authored for this implementation.
-- Fonts: local Georgia and Arial/system fallbacks, no downloads.
+All six active editorial images were created with OpenAI imagegen on 17 November 2026 for this redesign. They are original photorealistic illustrations, not licensed third-party photography. No reference photograph was copied, extracted, edited or passed as an image-generation input. The watermarked screenshots informed art direction only.
 
-External image-source and licence checks could not be completed because Wikimedia API access was denied. A documented licensed Nairobi/property photo is an outstanding release requirement, not an optional cosmetic improvement.
+| Image           | Intended use                | Disclosure                                             |
+| --------------- | --------------------------- | ------------------------------------------------------ |
+| `residence`     | Cinematic home hero         | AI-generated architecture; not a listing               |
+| `apartments`    | PIIK Check property context | Fictional development, no availability implied         |
+| `land`          | PIIK Check land context     | Fictional landscape, no parcel/boundary assertion      |
+| `collaboration` | Professional Network        | Fictional people, not existing PIIK members            |
+| `diaspora`      | Diaspora Property Hub       | Fictional couple, not a client story                   |
+| `skyline`       | About/national identity     | Nairobi-inspired conceptual cityscape, not documentary |
+
+The manifest `assets/imagery/manifest.json` records generated master filenames, SHA-256 checksums, dimensions, creation dates and derivative widths. Original PNG masters remain in `/workspace/generated_images` and are provided separately in the review archive. Check each checksum before rebuilding. `scripts/optimise-images.py` produces 640/1024px WebP variants, plus 1536px for the hero and cityscape. Do not assert exclusive copyright or real-world identity from generated artwork.
+
+All editorial images have contextual alternative text and visible generated/illustrative captions. The hero is eager/high-priority; below-fold photos are lazy and asynchronously decoded. Responsive `srcset`/`sizes`, intrinsic dimensions and stable frames prevent downloading unnecessarily large variants or shifting layouts. All assets load locally; no image host or tracker is contacted.
+
+The original PIIK logo is unchanged; its cropped WebP derivative is retained. Original repository photographs are preserved but unused by the redesigned website, and no licence is asserted for them. The former `nairobi-preview.webp` derivative has been removed from active use. UI icons/favicon are original SVG; fonts are local system fonts.
+
+The generated editorial option resolves the earlier active-image provenance blocker without claiming that a third-party stock licence was verified. A future owner-supplied real property or documentary Nairobi photograph still requires a recorded source and appropriate rights before use.

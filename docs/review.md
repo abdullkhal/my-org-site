@@ -4,7 +4,7 @@
 
 Replace the certification-led site with an honest pre-launch property-integrity initiative. The journeys support consumer education, learning about demand and proposed professional collaboration. All initial PIIK services are free; there is no payment, subscription or paid membership flow.
 
-The design uses #103A32 forest green, #D7BA79 muted gold and #F4F5F0 ivory, with a preserved PIIK logo, system serif/sans-serif typography, rounded cards, original SVG icons and optimised local imagery. No framework, build step, analytics, third-party script or AI service is required.
+The design uses #103A32 forest green, #D7BA79 muted gold and #F4F5F0 ivory, with a preserved PIIK logo, system serif/sans-serif typography, rounded cards, original SVG icons and optimised local imagery. No framework, build step, analytics, third-party script or runtime AI service is required. The static editorial imagery is original AI-generated artwork; see `visual-review.md`.
 
 ## Review journeys
 
@@ -17,7 +17,7 @@ The design uses #103A32 forest green, #D7BA79 muted gold and #F4F5F0 ivory, with
 ## Verified in the development environment
 
 - JavaScript syntax check: passed.
-- 104 browser assertions passed using installed Playwright and Chromium.
+- 110 browser assertions passed using installed Playwright and Chromium.
 - All navigation targets/local assets, both main CTAs, network form pathway and document return links work.
 - Four guidance categories, four distinct actionable steps per category, keyboard radio navigation, per-category in-memory state, reset and print work. A printed PDF was inspected via text extraction and contains the limitation notice.
 - Knowledge guides open/close by keyboard.
@@ -36,10 +36,14 @@ Tests use only synthetic entries. No real registration, official search, title c
 
 1. **Submission/data protection:** configure real endpoints and test receipt/failure handling, confirm controller/contact details, retention and processors, and update privacy/consent copy before accepting registrations. See `forms.md`.
 2. **Official sources:** network restrictions prevented first-party link verification. The resource hub contains useful descriptions but withholds direct links. See `source-register.md`.
-3. **Image rights:** confirm the supplied Nairobi photograph's provenance/licence or replace it with a documented licensed image. The current derivative is explicitly a review-only placeholder. The watermarked reference photograph was not copied.
+3. **Imagery disclosure:** the older image with unconfirmed rights has been replaced by six original AI-generated editorial scenes. Maintain the visible fictional/illustrative disclosures. No watermarked reference photograph was copied. A future real photographic replacement needs recorded rights and provenance.
 4. **GitHub PR:** Git operations use the platform proxy. API access is denied by the current network policy; a PR body is prepared in `pull-request.md`. Do not claim a PR exists unless a successful create result is obtained.
 5. **Release:** owner review and explicit approval are required before merging or deploying. No deployment workflow or domain configuration was added or changed. The published cloud environment configuration was not changed or republished.
 
 ## Demand-validation next step
 
 Once real form collection is configured, assess consumer concerns by goal, professional interest by discipline/location and common unmet needs. Keep reporting aggregate and purpose-limited, rather than collecting documents or unnecessary personal details. Establish a small follow-up research process with separate permission before promising new capabilities. Phase 1 does not invent conversion metrics, members or demand figures.
+
+## Photographic visual review
+
+See `visual-review.md` for the new architectural hero, property imagery, professional collaboration, diaspora family scene and Nairobi-inspired cityscape, plus responsive-image/performance validation. No application logic was changed in this visual update.
