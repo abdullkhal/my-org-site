@@ -1,51 +1,72 @@
-# PIIK Kenya — pre-launch redesign
+# PIIK Kenya — Phase 2 review
 
-A lightweight, free property-guidance website in plain HTML, CSS and JavaScript. The Phase 1 redesign lives on `piik-prelaunch-redesign`; no build step, backend, payment flow or AI integration is needed.
+A static HTML/CSS/JavaScript property-guidance website. The Phase 2 candidate preserves the architectural hero, original logo, green/gold identity, system typography and responsive design. Work is on `phase-2-improvements`, based on latest fetched `main` (`7159d01`). No deployment or merge is included.
 
-## Local review
+## Develop locally
+
+Use the existing isolated checkout; no Git worktree is necessary unless requested.
 
 ```sh
 cd /workspace/my-org-site
 python3 -m http.server 3000 --bind 0.0.0.0
 ```
 
-Open the running server through your environment's supported preview/port forwarding or browser. The server is for development only. No new public deployment has been made. Use the existing isolated checkout; no worktree is necessary.
+Python 3 serves the site; there is no package installation or production build step. Node.js, environment-provided Playwright and `/usr/bin/chromium` run browser tests. The free checklists work without registration; navigation/guides also have non-JavaScript fallbacks.
 
-## What works
+## Maintain content
 
-- Responsive navigation, keyboard focus, skip links and reduced-motion support.
-- Four tailored PIIK Check categories with per-category checklist state, reset and print. No verification lookup, score or approval is produced.
-- Consumer, professional and diaspora journeys, official resource explanations and expandable educational guides.
-- Separate consumer and professional status cards: registration/enquiries are unavailable, buttons are disabled and no personal information is collected.
-- Privacy, service limitations and transparent image/source status.
+`data/sources.json` records authority candidates, scope, limitations and verification evidence. Nine destinations supplied through the founder’s independent research are enabled in the local Phase 2 hub. EBK and NEMA remain pending; published registers are distinguished from live status services. `data/knowledge.json` holds seven educational guides and review metadata. Checklist content is the structured `guidance` object in `app.js`.
 
-## Before any release
+After changing sources/guides, regenerate static content:
 
-- Registration remains disabled for this launch. Configure and test real submission endpoints and data-protection arrangements only before opening registration later. See [form integration notes](docs/forms.md).
-- Independently verify official resource URLs; network policy prevented verification. Direct links are withheld. See [source register](docs/source-register.md).
-- Retain the visible disclosures for original AI-generated editorial imagery. These scenes are not actual properties, network members or client stories. Real documentary replacements require appropriate rights and provenance.
-- Confirm privacy contact readiness and any additional organisation-specific legal notices.
-- Review and explicitly approve merge/deployment. `CNAME` is preserved as `piikkenya.com`; no domain, deployment or environment publication is part of this change.
+```sh
+python3 scripts/render-content.py
+python3 scripts/render-content.py --check
+python3 scripts/render-source-review.py --check
+```
 
-## Validation
+Rendering is an editorial step; the deployed site reads static HTML and needs no runtime JSON fetch or API. See [AI-assisted maintenance](docs/phase2/agent-foundation.md) for evidence and founder-review gates.
 
-The browser checks in `tests/site.cjs` use the environment-provided Playwright and Chromium (no runtime web dependencies). Start the server, then run:
+## Validate
+
+With the server running:
 
 ```sh
 node --check app.js
 node tests/site.cjs
+node tests/imagery.cjs
+node tests/phase2.cjs
+node tests/integration-preparation.cjs
+node tests/review-links.cjs
+python3 -m unittest discover -s tests -p 'test_source_confirmation.py'
+python3 scripts/render-content.py --check
+python3 scripts/render-source-review.py --check
+node scripts/enquiry-workflow.cjs
 ```
 
-Set `PIIK_TEST_URL` to change the default test target, or `PIIK_CHROMIUM` to change the browser executable. Browser output/screenshots are written outside the checkout to `/tmp/piik-review` by default. An optional axe-core accessibility audit can be run from the environment without adding it as a website dependency.
+`PIIK_TEST_URL`, `PIIK_CHROMIUM` and `PIIK_TEST_OUTPUT` override defaults. Tests write logs/screenshots outside the repository, by default under `/tmp`. The optional axe audit runs when `PIIK_AXE_PATH` points to an installed axe-core script. For this review, axe-core 4.11.0 was installed in `/tmp/piik-phase2-tools` without adding a website dependency. Install/reinstall review tooling outside the checkout with a writable npm cache if required:
 
-## Visual review update
+```sh
+npm install --prefix /tmp/piik-phase2-tools --cache /tmp/piik-npm-cache --no-audit --no-fund --save-exact axe-core@4.11.0
+PIIK_AXE_PATH=/tmp/piik-phase2-tools/node_modules/axe-core/axe.min.js node tests/site.cjs
+```
 
-The redesign now includes six original photorealistic AI-generated editorial scenes: residential architecture, apartments, land, professional collaboration, diaspora buyers and a Nairobi-inspired cityscape. The cinematic desktop hero becomes a photo-first stacked layout on mobile. All existing guidance, preview forms and safeguards remain in place.
+## Review without deployment
 
-Responsive assets and provenance live in `assets/imagery/`. To regenerate WebP variants from the separately preserved PNG masters, run `python3 scripts/optimise-images.py /path/to/masters` with Pillow installed. This is a maintenance tool, not a website dependency. See [visual review](docs/visual-review.md) and [image/source register](docs/source-register.md).
+```sh
+python3 scripts/package-preview.py /tmp/piik-phase2-export
+```
 
-To export self-contained review pages without deploying, run `python3 scripts/package-preview.py /path/to/review-output`. The resulting ZIP includes desktop/mobile responsive HTML and embedded assets. Use `node tests/imagery.cjs` for the additional image-loading and transfer-budget checks.
+The ZIP embeds assets and includes homepage, Terms, Privacy, Credits and a disabled enquiry prototype with synthetic examples, plus `official-links.html` with the current nine-link review table and pending destinations. Preserve all extracted pages together. The live source remains unchanged. Optional image regeneration (`scripts/optimise-images.py`) requires separately preserved original masters and Pillow; it is not required for serving/testing existing imagery.
 
-## Publication readiness
+## Enquiries, measurement and approval
 
-The approved design has received a small launch-readiness pass. Non-submitting form previews have been replaced by explicit disabled status cards; checklists and approved visuals are retained. GitHub Pages deployment evidence, approval requirements and post-approval verification steps are recorded in [launch readiness](docs/launch-readiness.md). Do not merge or publish without the owner's explicit approval. Earlier visual-review reports describe historical validation; the launch-review test artifacts cover the current candidate.
+Online collection and tracking remain disabled. `review/enquiries.html` shows four disabled prototypes. `data/enquiries.json`, `data/response-templates.json` and the offline synthetic-only workflow prepare future operations; they are not production intake or notification services. Never add real enquiry records or credentials to this public repository.
+
+Read [Phase 2 audit and approval report](docs/phase2/audit-and-review.md), [enquiry/measurement decisions](docs/phase2/operations.md) and [AI foundation](docs/phase2/agent-foundation.md). Provider, mailbox, privacy arrangements, official links and any third-party measurement require review before activation. Founder review is required for sensitive communications and business decisions. Do not push, merge, deploy, purchase services or collect real information without explicit approval.
+
+Historical Phase 1 documents remain for context; the Phase 2 report and current structured records describe this candidate.
+
+The [proposed official website list](docs/phase2/official-websites.md) accepts independent founder confirmation without requiring this environment to reach the service. Formspree mapping and mocked result handling are in `scripts/formspree-adapter.cjs`; live intake remains unavailable and `data/formspree.json` has no endpoint or selected email.
+
+The [official link update](docs/phase2/official-link-update.md) records the founder-supplied URL corrections, the nine-link/eight-authority comparison and register-versus-live-status distinctions.

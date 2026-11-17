@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /review/
+Disallow: /data/
+Disallow: /docs/
+Disallow: /tests/
+Disallow: /scripts/
+Sitemap: https://piikkenya.com/sitemap.xml

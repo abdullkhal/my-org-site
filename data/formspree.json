@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "proposed_provider": "Formspree",
+  "enabled": false,
+  "endpoint": null,
+  "business_email": null,
+  "account_owner": "founder — to be confirmed",
+  "approval": {
+    "provider_and_plan": false,
+    "destination_mailbox_verified": false,
+    "privacy_notice_and_lawful_basis": false,
+    "processor_terms_and_transfers": false,
+    "retention_and_deletion": false,
+    "spam_and_server_validation": false,
+    "delivery_and_failure_tests": false,
+    "founder_activation": false
+  },
+  "request_contract": {
+    "method": "POST",
+    "endpoint_pattern": "https://formspree.io/f/APPROVED_FORM_ID",
+    "content_type": "application/json",
+    "accept": "application/json",
+    "fields": ["category", "name", "email", "message", "role", "service_area", "privacy_acknowledged", "_gotcha", "_subject"],
+    "confirmation": "Expected JSON ok:true plus HTTP success; must be confirmed against current provider docs and a synthetic account test before activation."
+  },
+  "current_runtime": "No script loaded into the website, no endpoint, no account connection, no email selected. Mock-only adapter; production entry point always rejects."
+}

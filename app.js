@@ -1,6 +1,7 @@
 "use strict";
 
 // No analytics, third-party scripts, storage or remote verification requests.
+// Structured checklist content: roles, scope and stable category IDs.
 const guidance = {
   agents: {
     title: "An agent or agency",
@@ -82,7 +83,7 @@ const guidance = {
       ],
       [
         "Check the appropriate official body",
-        "For advocates consult LSK; for licensed land surveyors consult the Land Surveyors’ Board; for estate agents consult EARB. For valuers, identify the responsible statutory registration body independently.",
+        "For advocates consult LSK; for licensed land surveyors consult the Land Surveyors’ Board; for estate agents consult EARB. For valuers consult the Valuers Registration Board; for architects and quantity surveyors BORAQS; for engineers EBK. Confirm current practising requirements with the relevant body.",
       ],
       [
         "Confirm current status independently",
@@ -112,7 +113,7 @@ function makeElement(tag, text, className) {
 function updateProgress() {
   const count = checklistStates[currentCategory].size;
   const progress = document.querySelector("#check-progress");
-  progress.textContent = `${count} of 4 guidance steps marked as reviewed. ${count === 4 ? "Checklist reviewed — this is not a verification result." : "Reviewed does not mean verified."}`;
+  progress.textContent = `${count} of 4 steps reviewed${count === 4 ? " · Review complete" : ""}.`;
 }
 
 function renderChecklist(category, announce = false) {
@@ -144,6 +145,16 @@ function renderChecklist(category, announce = false) {
       updateProgress();
     });
     itemList.append(row);
+    // Resource links sit outside checkbox labels so navigation never toggles a step.
+    const resources = {
+      agents: ["earb", "earb", "lsk", "lsk"],
+      property: ["lsb", "ardhisasa", "lsk", "lsk"],
+      developers: ["brs", "approvals", "nca", "boraqs"],
+      professionals: ["lsk", "lsb", "vrb", "ebk"],
+    };
+    const resource = makeElement("a", "Related authority and check scope →", "step-resource text-link");
+    resource.href = `#resource-${resources[category][index]}`;
+    itemList.append(resource);
   });
   const progress = makeElement("p", "", "progress-copy");
   progress.id = "check-progress";
@@ -168,7 +179,7 @@ function renderChecklist(category, announce = false) {
   updateProgress();
   if (announce)
     document.querySelector("#category-status").textContent =
-      `${title} guidance loaded. Four steps to explore. Guidance only, not verification.`;
+      `${title} guidance loaded. Four steps to review.`;
 }
 
 if (checkOutput) {

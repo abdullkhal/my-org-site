@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "auto_send_enabled": false,
+  "templates": [
+    {"id":"acknowledgement","category":"all","text":"Thank you for contacting PIIK Kenya. Your reference is {{enquiry_id}}. We will review your enquiry. Please do not send identity documents, title deeds or bank details.","requires_founder_review":true},
+    {"id":"consumer-guidance","category":"consumer","text":"You can begin with our free property checklist and relevant authority guides. An independent advocate can advise on your specific transaction. PIIK does not verify ownership or transaction safety.","requires_founder_review":true},
+    {"id":"diaspora-guidance","category":"diaspora","text":"Our diaspora guide can help you plan independent site checks, professional advice and payment safeguards. Please tell us the general topic you need help with; avoid sensitive records.","requires_founder_review":true},
+    {"id":"professional-interest","category":"professional","text":"Thank you for your interest in the proposed multidisciplinary network. Interest does not create membership, certification, endorsement or a guarantee of introductions. The founder will review proposed next steps.","requires_founder_review":true},
+    {"id":"general","category":"general","text":"Thank you for sharing your question. The founder will review the topic and decide whether PIIK can help or point you to a suitable independent resource.","requires_founder_review":true},
+    {"id":"sensitive-escalation","category":"all","text":"This enquiry needs founder review. Do not provide legal findings, accuse any person, confirm ownership, promise a refund or disclose personal records. Refer the sender to qualified independent help where appropriate.","requires_founder_review":true}
+  ]
+}

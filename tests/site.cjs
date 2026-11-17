@@ -6,6 +6,8 @@ const { chromium } = require("playwright");
 const base = process.env.PIIK_TEST_URL || "http://127.0.0.1:3000";
 const output = process.env.PIIK_TEST_OUTPUT || "/tmp/piik-review";
 const axePath = process.env.PIIK_AXE_PATH;
+const sourceRecords = require("../data/sources.json").sources;
+const officialURLs = sourceRecords.filter(s => s.status === "verified").flatMap(s => [s.public_url, ...(s.additional_links || []).map(link => link.url)]);
 async function loadEditorialImages(page) {
   for (const image of await page.locator("img").all()) {
     await image.scrollIntoViewIfNeeded();
@@ -83,6 +85,8 @@ function check(value, label) {
           (await page.locator(`[id="${href.slice(1)}"]`).count()) === 1,
           `anchor target ${href}`,
         );
+      } else if (href.startsWith("https://")) {
+        check(officialURLs.includes(href), `external destination is in the reviewed source register: ${href}`);
       } else if (!href.startsWith("mailto:")) {
         const res = await context.request.get(new URL(href, base).href);
         check(res.status() === 200, `local navigation ${href}`);
@@ -111,11 +115,11 @@ function check(value, label) {
       .click();
     check(page.url().endsWith("#piik-check"), "primary CTA reaches PIIK Check");
     await page
-      .getByRole("link", { name: "Join Our Professional Network", exact: true })
+      .getByRole("link", { name: "Register Your Professional Interest", exact: true })
       .click();
     check(
-      page.url().endsWith("#network"),
-      "secondary CTA reaches professional network",
+      page.url().endsWith("#professional-form"),
+      "secondary CTA reaches professional interest status",
     );
     await page
       .getByRole("link", {
@@ -146,9 +150,9 @@ function check(value, label) {
       for (let index = 0; index < 4; index++) await boxes.nth(index).check();
       check(
         (await page.locator("#check-progress").textContent()).includes(
-          "this is not a verification result",
+          "Review complete",
         ),
-        `${key} completion does not imply verification`,
+        `${key} completion reports review only`,
       );
     }
     await page.locator('.category:has(input[value="agents"])').click();
@@ -261,12 +265,12 @@ function check(value, label) {
       "no cookies or browser storage written",
     );
     check(
-      (await page.locator("#official-hub a").count()) === 0,
-      "unverified official destinations not presented as verified links",
+      (await page.locator("#official-hub a[href^='https:']").count()) === officialURLs.length,
+      "hub exposes only recorded independently researched destinations",
     );
     check(
-      await page.locator(".image-label").isVisible(),
-      "original generated imagery disclosure visible",
+      (await page.locator(".image-label, .photo-note").count()) === 0,
+      "repeated decorative image labels removed; credits retained",
     );
     await page.reload({ waitUntil: "networkidle" });
     check(
@@ -339,7 +343,7 @@ function check(value, label) {
       "click outside closes mobile menu",
     );
 
-    for (const file of ["privacy.html", "credits.html"]) {
+    for (const file of ["privacy.html", "credits.html", "terms.html"]) {
       await page.goto(`${base}/${file}`, { waitUntil: "networkidle" });
       check(
         await page.locator("main h1").isVisible(),
@@ -394,7 +398,7 @@ function check(value, label) {
       const results = [];
       for (const width of [390, 1440]) {
         await page.setViewportSize({ width, height: 1000 });
-        for (const route of ["/", "/privacy.html", "/credits.html"]) {
+        for (const route of ["/", "/privacy.html", "/credits.html", "/terms.html", "/review/enquiries.html", "/review/official-links.html"]) {
           await page.goto(`${base}${route}`, { waitUntil: "networkidle" });
           await page.evaluate(fs.readFileSync(axePath, "utf8"));
           const audit = await page.evaluate(async () =>

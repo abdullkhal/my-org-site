@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "collection_enabled": false,
+  "provider": null,
+  "notification_destination": null,
+  "categories": ["consumer", "diaspora", "professional", "general"],
+  "fields": {
+    "required": ["category", "name", "email", "message", "privacy_acknowledged"],
+    "professional_optional": ["role", "service_area"],
+    "limits": {"name": 100, "email": 254, "message": 1500, "role": 100, "service_area": 100},
+    "excluded": ["identity_documents", "title_deeds", "bank_details", "payments", "uploads"]
+  },
+  "statuses": ["new", "needs_founder_review", "awaiting_information", "responded", "closed", "deletion_due"],
+  "tracking_fields": ["enquiry_id", "category", "received_at", "status", "owner", "response_due_at", "reviewed_by", "closed_at", "delete_at"],
+  "retention_proposal": "Delete closed enquiry content after 90 days unless a documented lawful reason requires otherwise; founder must approve policy and deletion controls before collection.",
+  "notifications": {"include": ["enquiry_id", "category", "status"], "exclude": ["message", "email", "name", "documents"], "destination_approved": false},
+  "marketing_opt_in": false,
+  "publication_requires": ["provider", "destination_mailbox", "data_controller", "purpose_and_lawful_basis", "privacy_notice", "retention_and_deletion", "processor_terms_and_transfers", "spam_and_rate_limits", "server_validation", "delivery_and_failure_tests", "founder_approval"]
+}

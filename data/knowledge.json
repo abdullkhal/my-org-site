@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "guides": [
+    {
+      "id": "land-searches",
+      "category": "Land records",
+      "title": "What a land search can—and cannot—tell you",
+      "paragraphs": [
+        "Ask an independent advocate to identify the parcel, relevant registry and current official search route. Ardhisasa supports some land services; coverage and the correct process must be confirmed for the property.",
+        "Reconcile the official record with seller identity, authority, restrictions, charges and required consents. Ask a licensed land surveyor to assess boundaries, access and whether the site matches the parcel. A search and a site assessment answer different questions.",
+        "Repeat time-sensitive checks as your advocate advises before completion. Retain the official result and its date; do not rely solely on a photograph of a title or a forwarded search."
+      ],
+      "source_ids": [
+        "ardhisasa",
+        "lsb",
+        "lsk"
+      ],
+      "editorial_status": "draft_pending_first_party_review",
+      "updated_at": "2026-11-17",
+      "owner": "founder",
+      "review_due": "before_publication",
+      "audience": [
+        "consumer",
+        "professional"
+      ],
+      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication."
+    },
+    {
+      "id": "agents",
+      "category": "Estate agents",
+      "title": "Choose the person as carefully as the property",
+      "paragraphs": [
+        "Obtain the agent’s full practising name, business details and registration information. Ask EARB about current registration and practising requirements, and confirm the identity matches the person you are engaging.",
+        "Have an independent advocate examine the seller’s or landlord’s authority and the agent’s written mandate for that specific property. Agree services, fees, conflicts and refund terms in writing.",
+        "Call a separately obtained number to confirm payment details. Company registration, a branded office or a social media profile cannot replace these checks."
+      ],
+      "source_ids": [
+        "earb",
+        "brs",
+        "lsk"
+      ],
+      "editorial_status": "draft_pending_first_party_review",
+      "updated_at": "2026-11-17",
+      "owner": "founder",
+      "review_due": "before_publication",
+      "audience": [
+        "consumer",
+        "professional"
+      ],
+      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication."
+    },
+    {
+      "id": "developers",
+      "category": "Developers",
+      "title": "Separate the company, the land and the project",
+      "paragraphs": [
+        "Identify the contracting legal entity and use the relevant BRS service to investigate its records. Ask who owns the land and whether that entity has the authority to develop and sell.",
+        "Ask independent advisers to check applicable county planning/building permissions, environmental requirements, contractor status and project registration. Compare approval references with the actual site, plans and developer.",
+        "Inspect past delivery claims independently. Ask about funding, construction oversight, utilities, access, completion responsibilities and ongoing management costs. Registration is one check, not proof of delivery."
+      ],
+      "source_ids": [
+        "brs",
+        "ardhisasa",
+        "approvals",
+        "nca",
+        "nema"
+      ],
+      "editorial_status": "draft_pending_first_party_review",
+      "updated_at": "2026-11-17",
+      "owner": "founder",
+      "review_due": "before_publication",
+      "audience": [
+        "consumer",
+        "professional"
+      ],
+      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication."
+    },
+    {
+      "id": "off-plan",
+      "category": "Off-plan purchases",
+      "title": "Understand what happens if delivery changes",
+      "paragraphs": [
+        "Have your own advocate review the proposed agreement before paying a reservation fee. Establish what is being sold, the land interest, specifications, price, taxes, fees and completion conditions.",
+        "Ask about payment milestones, evidence of progress, changes to plans, delay remedies, cancellation, refund terms and what happens if the developer cannot complete. Agree safeguards with your adviser; do not assume a payment is protected.",
+        "Use an independent professional for progress reports where appropriate. Show homes, architectural illustrations and promised returns do not establish that the contracted home will be delivered."
+      ],
+      "source_ids": [
+        "lsk",
+        "brs",
+        "approvals",
+        "boraqs"
+      ],
+      "editorial_status": "draft_pending_first_party_review",
+      "updated_at": "2026-11-17",
+      "owner": "founder",
+      "review_due": "before_publication",
+      "audience": [
+        "consumer",
+        "professional"
+      ],
+      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication."
+    },
+    {
+      "id": "fraud",
+      "category": "Fraud awareness",
+      "title": "Pause when the story or payment details change",
+      "paragraphs": [
+        "Warning signs include urgency, refusal of independent checks, inconsistent names, altered payment instructions and requests to keep a transaction secret. These are reasons to pause and investigate, not public findings of wrongdoing.",
+        "Keep messages, agreements and receipts securely. Verify identities and account instructions through an independently obtained contact rather than a number included in a suspicious message. Never share PINs, passwords or one-time codes.",
+        "If money has already moved and you suspect fraud, promptly contact your bank or payment provider and seek independent legal advice about reporting and preservation of evidence. Do not publish accusations or send sensitive records to PIIK."
+      ],
+      "source_ids": [
+        "lsk",
+        "earb",
+        "brs"
+      ],
+      "editorial_status": "draft_pending_first_party_review",
+      "updated_at": "2026-11-17",
+      "owner": "founder",
+      "review_due": "before_publication",
+      "audience": [
+        "consumer",
+        "professional"
+      ],
+      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication."
+    },
+    {
+      "id": "independent-team",
+      "category": "Independent professionals",
+      "title": "Build a team with clear roles",
+      "paragraphs": [
+        "An advocate can advise on the legal transaction; a land surveyor on parcel and boundary matters; a valuer on valuation; an architect, quantity surveyor or engineer on the relevant design, cost or engineering scope. Define the work you need before appointing someone.",
+        "Confirm current registration and practising status with the relevant body. Ask about experience, conflicts of interest, who will perform the work and how concerns are handled.",
+        "Agree scope, written deliverables, fees, timelines and reporting directly. A seller’s referral may be useful, but choose advisers who can act independently for your interests."
+      ],
+      "source_ids": [
+        "lsk",
+        "lsb",
+        "vrb",
+        "boraqs",
+        "ebk"
+      ],
+      "editorial_status": "draft_pending_first_party_review",
+      "updated_at": "2026-11-17",
+      "owner": "founder",
+      "review_due": "before_publication",
+      "audience": [
+        "consumer",
+        "professional"
+      ],
+      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication."
+    },
+    {
+      "id": "diaspora",
+      "category": "Diaspora planning",
+      "title": "Keep control of a property process from abroad",
+      "paragraphs": [
+        "Choose your own advocate and independent site representative in Kenya. Agree how you will verify identities, receive reports and confirm instructions across time zones. Do not delegate every check to the person selling the property.",
+        "Ask your advocate about the legal scope, execution and registration requirements of any power of attorney before appointing a representative. Share only the authority required for the task and keep a record of instructions.",
+        "Budget for professional fees, taxes, currency conversion and transfer costs. Confirm payment recipients independently, plan milestone reviews and arrange secure document handling with your advisers. Video tours supplement independent site checks; they do not replace them.",
+        "Before travelling or paying, work through the property checklist and prepare questions about access, occupancy, utilities, title, approvals and future management. Keep an organised record that your independent advisers can review."
+      ],
+      "source_ids": [
+        "lsk",
+        "ardhisasa",
+        "lsb",
+        "approvals"
+      ],
+      "editorial_status": "draft_pending_first_party_review",
+      "updated_at": "2026-11-17",
+      "owner": "founder",
+      "review_due": "before_publication",
+      "audience": [
+        "diaspora",
+        "consumer"
+      ],
+      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication."
+    }
+  ]
+}

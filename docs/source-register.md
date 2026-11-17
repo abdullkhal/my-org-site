@@ -1,3 +1,17 @@
+# Official-source and image register — current status
+
+Recorded review: **17 November 2026**. The authoritative structured register is [`data/sources.json`](../data/sources.json); the [current clickable link table](phase2/official-websites.md) lists all supplied destinations, resource types and limitations.
+
+Nine URLs covering eight authorities have been accepted from the founder’s independent research and enabled in the local Phase 2 hub. Evidence records clearly identify the founder as the source, not an automated page-content or current-status verification. The founder’s original research date was not supplied. All nine current retrieval attempts returned proxy CONNECT 403; this is separate from the accepted destination research and does not establish an outage.
+
+The EARB link is a dated 2026 Gazette publication. LSK links to FAQ guidance; LSB and the two BORAQS pages are register destinations, not assumed to be live practising-status services. BRS and VRB homepages are gateways. Ardhisasa provides the route to supported land services; NCA’s contractor page is separate from project/county approval.
+
+**Discrepancy:** the original checklist had ten candidate authorities. The founder supplied nine URLs for eight authorities because BORAQS has separate architect and quantity-surveyor pages. EBK and NEMA therefore both remain pending; county approvals remain property-specific. The earlier EARB, LSB, VRB and BORAQS candidate domains were superseded by the founder’s researched destinations. Original candidate URLs remain in the structured history.
+
+The material below is historical Phase 1 evidence, not the current active-link list. Old network restrictions and references to visible image labels or master-file locations describe that earlier work. Current images, logo and CNAME remain unchanged.
+
+---
+
 # Source and image register
 
 Checked: 17 November 2026. Runtime outbound proxy denied the candidate destinations below with HTTP CONNECT 403. This is an environment-policy limitation, not evidence that an official service is down or that a candidate URL is authoritative. No direct official links have been shipped in the UI.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export three self-contained review pages and a ZIP, without deploying anything.
+"""Export self-contained Phase 2 review pages and a ZIP, without deploying anything.
 
 Usage: python3 scripts/package-preview.py /path/to/review-output
 Uses only the Python standard library. The preview includes no external assets.
@@ -26,7 +26,7 @@ def main():
     js = (ROOT / 'app.js').read_text()
     assets = [(ROOT/'assets/piik-logo.webp','image/webp'), (ROOT/'assets/favicon.svg','image/svg+xml')]
     assets += [(p,'image/webp') for p in sorted((ROOT/'assets/imagery').glob('*.webp'))]
-    for name in ['index.html','privacy.html','credits.html']:
+    for name in ['index.html','privacy.html','credits.html','terms.html']:
         page = (ROOT / name).read_text()
         page = page.replace('<link rel="stylesheet" href="style.css" />', '<style>'+css+'</style>')
         if '<script src="app.js" defer></script>' in page:
@@ -40,31 +40,15 @@ def main():
         page = re.sub(r'(<meta\s+http-equiv="Content-Security-Policy"\s+content=")[^"]*("\s*/>)',lambda m:m.group(1)+policy+m.group(2),page)
         page = page.replace('</head>','<meta name="robots" content="noindex, nofollow"></head>')
         (preview/name).write_text(page)
-    (preview/'READ-ME.txt').write_text('''PIIK KENYA — PHOTOGRAPHIC VISUAL REVIEW
-
-Extract this ZIP and keep all three HTML files together. Scripts, styles and
-responsive images are embedded. Try opening index.html in a modern browser.
-If file URLs are restricted, run the following command in the extracted folder:
-
-  python3 -m http.server 3000
-
-Open that local server in your browser. The preview was validated over local
-HTTP; direct file URLs are blocked by the managed development browser policy.
-No external image host, font, tracking script or AI service is contacted.
-
-This is a review preview, not the live website. All six editorial scenes are
-original photorealistic AI-generated illustrations, not actual listings,
-network members, client stories or documentary city photographs. The credits
-page and visible captions explain their provenance.
-
-Enquiries and registration are unavailable: disabled status cards, no inputs,
-no submissions and no registration claims.
-Official-resource links remain withheld pending verification.
-The source branch is piik-prelaunch-redesign. No merge or deployment occurred.
-''')
+    for name in ['enquiries.html', 'official-links.html']:
+        prototype = (ROOT/'review'/name).read_text().replace('<link rel="stylesheet" href="../style.css" />','<style>'+css+'</style>').replace('../index.html','index.html')
+        prototype = prototype.replace('../assets/favicon.svg', 'data:image/svg+xml;base64,'+base64.b64encode((ROOT/'assets/favicon.svg').read_bytes()).decode())
+        prototype = prototype.replace("style-src 'self'", "style-src 'self' 'sha256-"+sha(css)+"'")
+        (preview/name).write_text(prototype)
+    (preview/'READ-ME.txt').write_text("PIIK KENYA — PHASE 2 REVIEW\n\nExtract all files together. Open index.html or serve this folder with python3 -m http.server. All website assets are embedded. terms.html, privacy.html and credits.html are included. enquiries.html is a disabled prototype with synthetic examples. No real collection, tracking, deployment or paid service is enabled. official-links.html records nine founder-researched linked destinations; EBK and NEMA remain pending. Published registers are distinguished from live status checks. Source branch: phase-2-improvements.\n")
     archive=output/'piik-visual-review-preview.zip'
     with zipfile.ZipFile(archive,'w',compression=zipfile.ZIP_DEFLATED) as z:
-        for name in ['index.html','privacy.html','credits.html','READ-ME.txt']:
+        for name in ['index.html','privacy.html','credits.html','terms.html','enquiries.html','official-links.html','READ-ME.txt']:
             z.write(preview/name,name)
     with zipfile.ZipFile(archive) as z:
         assert z.testzip() is None

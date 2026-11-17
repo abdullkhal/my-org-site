@@ -1,0 +1,416 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "earb",
+      "title": "EARB",
+      "authority": "Estate Agents Registration Board",
+      "candidate_url": "https://estateagentsboard.or.ke/official-publication-of-the-2026-kenya-gazette-registered-estate-agents-and-estate-agents-companies/",
+      "public_url": "https://estateagentsboard.or.ke/official-publication-of-the-2026-kenya-gazette-registered-estate-agents-and-estate-agents-companies/",
+      "status": "verified",
+      "checked_at": "2026-11-17",
+      "scope": "Read EARB’s publication of the 2026 Kenya Gazette register of estate agents and estate-agent companies. It provides evidence of entries covered by that published register.",
+      "limitations": "This is a dated publication, not a live practising-status check. Confirm later changes and current requirements with EARB. An entry does not establish authority over a particular property.",
+      "evidence": [
+        {
+          "url": "https://estateagentsboard.or.ke/official-publication-of-the-2026-kenya-gazette-registered-estate-agents-and-estate-agents-companies/",
+          "excerpt": "Founder supplied this destination following independent research and requested its use in the Phase 2 hub. The development environment did not retrieve the page.",
+          "checked_at": "2026-11-17",
+          "reviewer": "PIIK Kenya founder",
+          "type": "founder_supplied_destination"
+        }
+      ],
+      "observation": "Founder-supplied destination accepted. HTTPS retrieval from this environment returned CONNECT 403; this does not invalidate the independent research or establish an outage.",
+      "review_required": [
+        "Recheck destination and any dated register before relying on an individual record.",
+        "Confirm live practising status, service coverage and fees separately with the relevant authority."
+      ],
+      "reviewer": "PIIK Kenya founder — independently researched destinations supplied in chat",
+      "next_review_at": "2026-12-17",
+      "verification_method": "founder_supplied_independent_research",
+      "network_observation": {
+        "checked_at": "2026-11-17",
+        "url": "https://estateagentsboard.or.ke/official-publication-of-the-2026-kenya-gazette-registered-estate-agents-and-estate-agents-companies/",
+        "result": "proxy_connect_403",
+        "does_not_determine_verification_status": true
+      },
+      "previous_candidate_url": "https://earb.go.ke/",
+      "verification_scope": "Destination accepted on founder research; no live status, page contents or individual record independently checked by the development environment.",
+      "research_date": null,
+      "research_date_note": "Founder research date not specified; checked_at is the date the supplied destination was reviewed and recorded in this project.",
+      "resource_kind": "Published 2026 register",
+      "link_label": "Read 2026 Gazette publication →"
+    },
+    {
+      "id": "ardhisasa",
+      "title": "Ardhisasa",
+      "authority": "Digital land services",
+      "candidate_url": "https://ardhisasa.lands.go.ke/",
+      "public_url": "https://ardhisasa.lands.go.ke/",
+      "status": "verified",
+      "checked_at": "2026-11-17",
+      "scope": "Access the official land-services portal for supported applications and searches. Use the appropriate official process to obtain property-specific records.",
+      "limitations": "Services, account requirements and coverage depend on the property and registry. Opening the portal or viewing a title copy does not confirm ownership or transaction safety.",
+      "evidence": [
+        {
+          "url": "https://ardhisasa.lands.go.ke/",
+          "excerpt": "Founder supplied this destination following independent research and requested its use in the Phase 2 hub. The development environment did not retrieve the page.",
+          "checked_at": "2026-11-17",
+          "reviewer": "PIIK Kenya founder",
+          "type": "founder_supplied_destination"
+        }
+      ],
+      "observation": "Founder-supplied destination accepted. HTTPS retrieval from this environment returned CONNECT 403; this does not invalidate the independent research or establish an outage.",
+      "review_required": [
+        "Recheck destination and any dated register before relying on an individual record.",
+        "Confirm live practising status, service coverage and fees separately with the relevant authority."
+      ],
+      "reviewer": "PIIK Kenya founder — independently researched destinations supplied in chat",
+      "next_review_at": "2026-12-17",
+      "verification_method": "founder_supplied_independent_research",
+      "network_observation": {
+        "checked_at": "2026-11-17",
+        "url": "https://ardhisasa.lands.go.ke/",
+        "result": "proxy_connect_403",
+        "does_not_determine_verification_status": true
+      },
+      "previous_candidate_url": "https://ardhisasa.lands.go.ke/",
+      "verification_scope": "Destination accepted on founder research; no live status, page contents or individual record independently checked by the development environment.",
+      "research_date": null,
+      "research_date_note": "Founder research date not specified; checked_at is the date the supplied destination was reviewed and recorded in this project.",
+      "resource_kind": "Land services portal",
+      "link_label": "Open Ardhisasa →"
+    },
+    {
+      "id": "lsk",
+      "title": "LSK",
+      "authority": "Law Society of Kenya",
+      "candidate_url": "https://lsk.or.ke/faq/",
+      "public_url": "https://lsk.or.ke/faq/",
+      "status": "verified",
+      "checked_at": "2026-11-17",
+      "scope": "Read LSK’s frequently asked questions and use its guidance to identify the appropriate route for enquiries about advocates and practising requirements.",
+      "limitations": "This FAQ is an information page, not itself an advocate-status search or certificate. Confirm the individual advocate’s current status through the process indicated by LSK or by contacting LSK.",
+      "evidence": [
+        {
+          "url": "https://lsk.or.ke/faq/",
+          "excerpt": "Founder supplied this destination following independent research and requested its use in the Phase 2 hub. The development environment did not retrieve the page.",
+          "checked_at": "2026-11-17",
+          "reviewer": "PIIK Kenya founder",
+          "type": "founder_supplied_destination"
+        }
+      ],
+      "observation": "Founder-supplied destination accepted. HTTPS retrieval from this environment returned CONNECT 403; this does not invalidate the independent research or establish an outage.",
+      "review_required": [
+        "Recheck destination and any dated register before relying on an individual record.",
+        "Confirm live practising status, service coverage and fees separately with the relevant authority."
+      ],
+      "reviewer": "PIIK Kenya founder — independently researched destinations supplied in chat",
+      "next_review_at": "2026-12-17",
+      "verification_method": "founder_supplied_independent_research",
+      "network_observation": {
+        "checked_at": "2026-11-17",
+        "url": "https://lsk.or.ke/faq/",
+        "result": "proxy_connect_403",
+        "does_not_determine_verification_status": true
+      },
+      "previous_candidate_url": "https://lsk.or.ke/",
+      "verification_scope": "Destination accepted on founder research; no live status, page contents or individual record independently checked by the development environment.",
+      "research_date": null,
+      "research_date_note": "Founder research date not specified; checked_at is the date the supplied destination was reviewed and recorded in this project.",
+      "resource_kind": "Guidance / FAQ",
+      "link_label": "Read LSK guidance →"
+    },
+    {
+      "id": "lsb",
+      "title": "Land Surveyors’ Board",
+      "authority": "Licensed land surveyors",
+      "candidate_url": "https://www.lsb.go.ke/register",
+      "public_url": "https://www.lsb.go.ke/register",
+      "status": "verified",
+      "checked_at": "2026-11-17",
+      "scope": "Consult the Land Surveyors’ Board’s register for listed land surveyors and the registration information it publishes. Match the person’s full details.",
+      "limitations": "Treat the listing as a published register unless the Board explicitly confirms a live status service. Check the register date and current licensing or practising position with the Board. A listing does not establish parcel boundaries.",
+      "evidence": [
+        {
+          "url": "https://www.lsb.go.ke/register",
+          "excerpt": "Founder supplied this destination following independent research and requested its use in the Phase 2 hub. The development environment did not retrieve the page.",
+          "checked_at": "2026-11-17",
+          "reviewer": "PIIK Kenya founder",
+          "type": "founder_supplied_destination"
+        }
+      ],
+      "observation": "Founder-supplied destination accepted. HTTPS retrieval from this environment returned CONNECT 403; this does not invalidate the independent research or establish an outage.",
+      "review_required": [
+        "Recheck destination and any dated register before relying on an individual record.",
+        "Confirm live practising status, service coverage and fees separately with the relevant authority."
+      ],
+      "reviewer": "PIIK Kenya founder — independently researched destinations supplied in chat",
+      "next_review_at": "2026-12-17",
+      "verification_method": "founder_supplied_independent_research",
+      "network_observation": {
+        "checked_at": "2026-11-17",
+        "url": "https://www.lsb.go.ke/register",
+        "result": "proxy_connect_403",
+        "does_not_determine_verification_status": true
+      },
+      "previous_candidate_url": "https://lsb.or.ke/",
+      "verification_scope": "Destination accepted on founder research; no live status, page contents or individual record independently checked by the development environment.",
+      "research_date": null,
+      "research_date_note": "Founder research date not specified; checked_at is the date the supplied destination was reviewed and recorded in this project.",
+      "resource_kind": "Published register",
+      "link_label": "View land surveyors register →"
+    },
+    {
+      "id": "brs",
+      "title": "BRS",
+      "authority": "Business Registration Service",
+      "candidate_url": "https://brs.go.ke/",
+      "public_url": "https://brs.go.ke/",
+      "status": "verified",
+      "checked_at": "2026-11-17",
+      "scope": "Find the official route to business and company registration services and the relevant records or searches. Use the actual service result for the entity concerned.",
+      "limitations": "The homepage is a gateway, not a company-search result. Account requirements and fees may apply. Business registration does not establish land ownership, project approval, solvency or investment safety.",
+      "evidence": [
+        {
+          "url": "https://brs.go.ke/",
+          "excerpt": "Founder supplied this destination following independent research and requested its use in the Phase 2 hub. The development environment did not retrieve the page.",
+          "checked_at": "2026-11-17",
+          "reviewer": "PIIK Kenya founder",
+          "type": "founder_supplied_destination"
+        }
+      ],
+      "observation": "Founder-supplied destination accepted. HTTPS retrieval from this environment returned CONNECT 403; this does not invalidate the independent research or establish an outage.",
+      "review_required": [
+        "Recheck destination and any dated register before relying on an individual record.",
+        "Confirm live practising status, service coverage and fees separately with the relevant authority."
+      ],
+      "reviewer": "PIIK Kenya founder — independently researched destinations supplied in chat",
+      "next_review_at": "2026-12-17",
+      "verification_method": "founder_supplied_independent_research",
+      "network_observation": {
+        "checked_at": "2026-11-17",
+        "url": "https://brs.go.ke/",
+        "result": "proxy_connect_403",
+        "does_not_determine_verification_status": true
+      },
+      "previous_candidate_url": "https://brs.go.ke/",
+      "verification_scope": "Destination accepted on founder research; no live status, page contents or individual record independently checked by the development environment.",
+      "research_date": null,
+      "research_date_note": "Founder research date not specified; checked_at is the date the supplied destination was reviewed and recorded in this project.",
+      "resource_kind": "Business services gateway",
+      "link_label": "Open BRS services →"
+    },
+    {
+      "id": "vrb",
+      "title": "VRB",
+      "authority": "Valuers Registration Board",
+      "candidate_url": "https://vrb.or.ke/",
+      "public_url": "https://vrb.or.ke/",
+      "status": "verified",
+      "checked_at": "2026-11-17",
+      "scope": "Consult the Valuers Registration Board for registration information and the route to checking a valuer’s current practising requirements.",
+      "limitations": "The homepage is not an individual status result or a property valuation. Confirm the person’s details and current status with the Board, and commission property-specific valuation work separately.",
+      "evidence": [
+        {
+          "url": "https://vrb.or.ke/",
+          "excerpt": "Founder supplied this destination following independent research and requested its use in the Phase 2 hub. The development environment did not retrieve the page.",
+          "checked_at": "2026-11-17",
+          "reviewer": "PIIK Kenya founder",
+          "type": "founder_supplied_destination"
+        }
+      ],
+      "observation": "Founder-supplied destination accepted. HTTPS retrieval from this environment returned CONNECT 403; this does not invalidate the independent research or establish an outage.",
+      "review_required": [
+        "Recheck destination and any dated register before relying on an individual record.",
+        "Confirm live practising status, service coverage and fees separately with the relevant authority."
+      ],
+      "reviewer": "PIIK Kenya founder — independently researched destinations supplied in chat",
+      "next_review_at": "2026-12-17",
+      "verification_method": "founder_supplied_independent_research",
+      "network_observation": {
+        "checked_at": "2026-11-17",
+        "url": "https://vrb.or.ke/",
+        "result": "proxy_connect_403",
+        "does_not_determine_verification_status": true
+      },
+      "previous_candidate_url": "https://vrb.go.ke/",
+      "verification_scope": "Destination accepted on founder research; no live status, page contents or individual record independently checked by the development environment.",
+      "research_date": null,
+      "research_date_note": "Founder research date not specified; checked_at is the date the supplied destination was reviewed and recorded in this project.",
+      "resource_kind": "Regulator website",
+      "link_label": "Open Valuers Registration Board →"
+    },
+    {
+      "id": "boraqs",
+      "title": "BORAQS",
+      "authority": "Architects & quantity surveyors",
+      "candidate_url": "https://boraqs.go.ke/registered/",
+      "public_url": "https://boraqs.go.ke/registered/",
+      "status": "verified",
+      "checked_at": "2026-11-17",
+      "scope": "Consult BORAQS’ separate published registers for architects and quantity surveyors. Match the professional’s name, discipline and registration details.",
+      "limitations": "A published register is not automatically a live practising-status service. Check the publication date and current practising requirements with BORAQS. Registration does not confirm project planning or building approval.",
+      "evidence": [
+        {
+          "url": "https://boraqs.go.ke/registered/",
+          "excerpt": "Founder supplied this destination following independent research and requested its use in the Phase 2 hub. The development environment did not retrieve the page.",
+          "checked_at": "2026-11-17",
+          "reviewer": "PIIK Kenya founder",
+          "type": "founder_supplied_destination"
+        },
+        {
+          "url": "https://boraqs.go.ke/registered/qs",
+          "excerpt": "Founder separately supplied the BORAQS quantity surveyors register destination following independent research.",
+          "checked_at": "2026-11-17",
+          "reviewer": "PIIK Kenya founder",
+          "type": "founder_supplied_destination"
+        }
+      ],
+      "observation": "Founder-supplied destination accepted. HTTPS retrieval from this environment returned CONNECT 403; this does not invalidate the independent research or establish an outage.",
+      "review_required": [
+        "Recheck destination and any dated register before relying on an individual record.",
+        "Confirm live practising status, service coverage and fees separately with the relevant authority."
+      ],
+      "reviewer": "PIIK Kenya founder — independently researched destinations supplied in chat",
+      "next_review_at": "2026-12-17",
+      "verification_method": "founder_supplied_independent_research",
+      "network_observation": {
+        "checked_at": "2026-11-17",
+        "url": "https://boraqs.go.ke/registered/",
+        "result": "proxy_connect_403",
+        "does_not_determine_verification_status": true
+      },
+      "previous_candidate_url": "https://boraqs.or.ke/",
+      "verification_scope": "Destination accepted on founder research; no live status, page contents or individual record independently checked by the development environment.",
+      "research_date": null,
+      "research_date_note": "Founder research date not specified; checked_at is the date the supplied destination was reviewed and recorded in this project.",
+      "resource_kind": "Published professional registers",
+      "link_label": "View architects register →",
+      "additional_links": [
+        {
+          "url": "https://boraqs.go.ke/registered/qs",
+          "label": "View quantity surveyors register →",
+          "resource_kind": "Published quantity surveyors register"
+        }
+      ]
+    },
+    {
+      "id": "ebk",
+      "title": "EBK",
+      "authority": "Engineers Board of Kenya",
+      "candidate_url": "https://ebk.go.ke/",
+      "public_url": null,
+      "status": "awaiting_independent_confirmation",
+      "checked_at": "2026-11-17",
+      "scope": "Engineering registration categories and the route to checking practising status.",
+      "limitations": "Confirm the appropriate category and scope for the work; a name match alone is insufficient.",
+      "evidence": [],
+      "observation": "HTTPS CONNECT denied: 403 Forbidden; no first-party page retrieved.",
+      "review_required": [
+        "Corroborate authority and destination from first-party government or regulator references",
+        "Follow HTTPS redirects and record final official URL",
+        "Review actual register/service scope, coverage, current status, account and fee requirements",
+        "Record evidence URL, dated excerpt, reviewer and next review date before enabling",
+        "Founder or another named reviewer may supply independent confirmation; no development-network recheck is required."
+      ],
+      "reviewer": null,
+      "next_review_at": null,
+      "verification_method": null,
+      "network_observation": {
+        "checked_at": "2026-11-17",
+        "result": "proxy_connect_403",
+        "does_not_determine_verification_status": true
+      }
+    },
+    {
+      "id": "nca",
+      "title": "NCA",
+      "authority": "National Construction Authority",
+      "candidate_url": "https://www.nca.go.ke/registered-contractors",
+      "public_url": "https://www.nca.go.ke/registered-contractors",
+      "status": "verified",
+      "checked_at": "2026-11-17",
+      "scope": "Use NCA’s registered-contractors page to consult contractor registration information and categories provided by the authority. Match the contractor’s identity and relevant scope.",
+      "limitations": "Check the record date, category and current standing with NCA. Contractor registration is separate from project registration, county approvals, land rights and a guarantee of completion.",
+      "evidence": [
+        {
+          "url": "https://www.nca.go.ke/registered-contractors",
+          "excerpt": "Founder supplied this destination following independent research and requested its use in the Phase 2 hub. The development environment did not retrieve the page.",
+          "checked_at": "2026-11-17",
+          "reviewer": "PIIK Kenya founder",
+          "type": "founder_supplied_destination"
+        }
+      ],
+      "observation": "Founder-supplied destination accepted. HTTPS retrieval from this environment returned CONNECT 403; this does not invalidate the independent research or establish an outage.",
+      "review_required": [
+        "Recheck destination and any dated register before relying on an individual record.",
+        "Confirm live practising status, service coverage and fees separately with the relevant authority."
+      ],
+      "reviewer": "PIIK Kenya founder — independently researched destinations supplied in chat",
+      "next_review_at": "2026-12-17",
+      "verification_method": "founder_supplied_independent_research",
+      "network_observation": {
+        "checked_at": "2026-11-17",
+        "url": "https://www.nca.go.ke/registered-contractors",
+        "result": "proxy_connect_403",
+        "does_not_determine_verification_status": true
+      },
+      "previous_candidate_url": "https://nca.go.ke/",
+      "verification_scope": "Destination accepted on founder research; no live status, page contents or individual record independently checked by the development environment.",
+      "research_date": null,
+      "research_date_note": "Founder research date not specified; checked_at is the date the supplied destination was reviewed and recorded in this project.",
+      "resource_kind": "Contractor register / search route",
+      "link_label": "View registered contractors →"
+    },
+    {
+      "id": "approvals",
+      "title": "Development approvals",
+      "authority": "County government & environmental authorities",
+      "candidate_url": null,
+      "public_url": null,
+      "status": "requires_property_location",
+      "checked_at": "2026-11-17",
+      "scope": "Ask the county responsible for the site to confirm applicable planning and building permissions, approved plans and conditions.",
+      "limitations": "Requirements vary by location and project. Confirm environmental approvals with the responsible authority where applicable; no single approval proves all permissions.",
+      "evidence": [],
+      "observation": "No nationwide county approval endpoint proposed. Identify county and project before choosing a service.",
+      "review_required": [
+        "Corroborate authority and destination from first-party government or regulator references",
+        "Follow HTTPS redirects and record final official URL",
+        "Review actual register/service scope, coverage, current status, account and fee requirements",
+        "Record evidence URL, dated excerpt, reviewer and next review date before enabling"
+      ],
+      "reviewer": null,
+      "next_review_at": null
+    },
+    {
+      "id": "nema",
+      "title": "NEMA",
+      "authority": "National Environment Management Authority",
+      "candidate_url": "https://www.nema.go.ke/",
+      "public_url": null,
+      "status": "awaiting_independent_confirmation",
+      "checked_at": "2026-11-17",
+      "scope": "The relevant environmental assessment and licensing route for a proposed development.",
+      "limitations": "Confirm whether the specific project requires an environmental licence and verify its conditions. It does not replace county or land checks.",
+      "evidence": [],
+      "observation": "HTTPS CONNECT denied: 403 Forbidden; no first-party page retrieved.",
+      "review_required": [
+        "Corroborate authority and destination from first-party government or regulator references",
+        "Follow HTTPS redirects and record final official URL",
+        "Review actual register/service scope, coverage, current status, account and fee requirements",
+        "Record evidence URL, dated excerpt, reviewer and next review date before enabling",
+        "Founder or another named reviewer may supply independent confirmation; no development-network recheck is required."
+      ],
+      "reviewer": null,
+      "next_review_at": null,
+      "verification_method": null,
+      "network_observation": {
+        "checked_at": "2026-11-17",
+        "result": "proxy_connect_403",
+        "does_not_determine_verification_status": true
+      }
+    }
+  ]
+}

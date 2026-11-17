@@ -2001,3 +2001,37 @@ textarea {
     font-size: 10pt;
   }
 }
+
+/* Phase 2: preserve the existing visual language while allowing longer copy. */
+.hero-interest-note { font-size: 11px; line-height: 1.6; margin-top: 10px; color: #e2e9e1; }
+.hero-actions .button { width: min(100%, 355px); }
+.step-resource { display: block; margin: -4px 0 18px 40px; font-size: 12px; }
+.source-card { scroll-margin-top: 130px; }
+.source-card .source-limit { font-size: 12px; }
+.network-disciplines { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.network-disciplines span { padding: 18px; border: 1px solid #ffffff50; border-radius: 12px; text-align: center; color: #f3eee1; }
+.article-body p + p { margin-top: 14px; }
+.document-main h2 { margin-top: 32px; }
+.document-main p { margin-block: 16px; }
+.prototype-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
+.prototype-grid fieldset { border: 1px solid var(--line); padding: 24px; border-radius: 14px; min-width: 0; }
+.prototype-grid label { display: block; margin: 14px 0; }
+.prototype-grid input, .prototype-grid select, .prototype-grid textarea { display: block; width: 100%; padding: 10px; margin-top: 6px; border: 1px solid #65766b; border-radius: 5px; font: inherit; }
+@media (min-width: 761px) {
+  .hero-visual { min-height: 740px; }
+  .hero-copy { top: 40px; }
+  .hero .pill { margin-bottom: 20px; }
+  .hero-lead { line-height: 1.65; margin-top: 20px; }
+  .hero-caption { margin-top: 16px; }
+}
+@media (max-width: 760px) {
+  .hero-actions .button { width: 100%; }
+  .network-disciplines { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .prototype-grid { grid-template-columns: 1fr; }
+}
+@media print {
+  .step-resource { font-size: 10pt; margin-bottom: 12px; }
+  .step-resource::after { content: " (see PIIK Official Verification Hub)"; }
+}
+.source-actions { display: grid; gap: 12px; margin-top: auto; }
+.source-actions .text-link { overflow-wrap: anywhere; }

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "enabled": false,
+  "provider": null,
+  "cookies": false,
+  "browser_storage": false,
+  "third_party_requests": false,
+  "events": {
+    "page_view": ["page_id"],
+    "checklist_select": ["category"],
+    "checklist_review_complete": ["category"],
+    "resource_click": ["source_id"],
+    "enquiry_accepted": ["category"]
+  },
+  "rules": ["Aggregate counts only; do not collect checklist answers", "No names, emails, messages, full URLs, query strings, identifiers, fingerprinting or session replay", "Count enquiry_accepted only after a server confirms durable acceptance; never on a button click", "Internal resource-guide clicks are distinct from verified outbound authority clicks", "Visits are not unique people; do not imply otherwise", "Document hosting/IP processing, retention, access and lawful basis before activation", "Third-party processing and public collection require founder approval"],
+  "retention_proposal": "Daily aggregate counts for 90 days, subject to founder approval; raw event retention off."
+}
