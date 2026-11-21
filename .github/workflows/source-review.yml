@@ -7,6 +7,8 @@ on:
       - 'data/monitoring.json'
       - 'data/sources.json'
       - 'scripts/monitor-sources.py'
+      - 'scripts/operations-report.py'
+      - 'scripts/intelligence.py'
       - '.github/workflows/source-review.yml'
   schedule:
     - cron: '25 6 * * *'
@@ -52,6 +54,7 @@ jobs:
             '40 6 * * 6') mode=weekly ;;
             '55 6 1 * *') mode=monthly ;;
           esac
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
           status=0
           python3 scripts/monitor-sources.py --mode "$mode" \
             --baseline "$RUNNER_TEMP/piik-baseline/state.json" \
@@ -66,6 +69,17 @@ jobs:
         with:
           path: ${{ runner.temp }}/piik-baseline/state.json
           key: piik-baseline-v2-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Prepare the weekly founder report and check the public release
+        if: ${{ !cancelled() && steps.collect.outputs.mode == 'weekly' }}
+        run: |
+          status=0
+          python3 scripts/operations-report.py --live \
+            --queue "$RUNNER_TEMP/piik-source-review/review-queue.json" \
+            --output "$RUNNER_TEMP/piik-source-review/executive-report.md" || status=$?
+          if test -f "$RUNNER_TEMP/piik-source-review/executive-report.md"; then
+            cat "$RUNNER_TEMP/piik-source-review/executive-report.md" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          exit "$status"
       - name: Upload editorial leads and source health
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2

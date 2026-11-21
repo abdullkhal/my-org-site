@@ -13,10 +13,13 @@ class Page(HTMLParser):
         super().__init__()
         self.ids = set()
         self.links = set()
+        self.indexable = True
         self.feed(path.read_text())
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == "meta" and attrs.get("name") == "robots":
+            self.indexable = "noindex" not in (attrs.get("content") or "").lower()
         if "id" in attrs:
             if attrs["id"] in self.ids:
                 raise ValueError(f'Duplicate HTML id: {attrs["id"]}')
@@ -51,7 +54,7 @@ sitemap = ET.parse(ROOT / "sitemap.xml")
 urls = [node.text for node in sitemap.findall(".//{*}loc")]
 expected = {
     "https://piikkenya.com/" + ("" if path.name == "index.html" else path.name)
-    for path in pages if path.name != "search.html"
+    for path in pages if pages[path].indexable
 }
 if len(urls) != len(set(urls)) or set(urls) != expected:
     problems.append("Sitemap does not match the public indexable pages.")

@@ -73,6 +73,7 @@ def request(url, method="GET"):
         except HTTPError as error:
             if attempt or error.code not in {500, 502, 503, 504}:
                 raise
+            error.close()
         except (URLError, TimeoutError) as error:
             transient = isinstance(error, TimeoutError) or getattr(
                 getattr(error, "reason", None), "errno", None
@@ -112,6 +113,8 @@ def snapshot(url, *, mode="notice_index", prefix="/"):
         if error.code not in {404, 410}:
             raise
         robots.allow_all = True
+    if robots.crawl_delay(AGENT) or robots.request_rate(AGENT):
+        raise ValueError("Source specifies an automated request schedule requiring review")
     if not robots.can_fetch(AGENT, url):
         raise ValueError("robots.txt disallows monitoring")
     with request(url) as response:

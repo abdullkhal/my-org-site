@@ -16,3 +16,6 @@ The baseline and initial risks are in [the audit](docs/project-003-audit.md). Se
 
 - Phase 1 local gate passed. Verification of candidate research destinations remains source-by-source.
 - Phase 2 implementation and fixture tests passed. The real-source and hosted-schedule gates are open. Activate individual sources only after permission, access and first-party evidence review.
+- Phase 3 is staged on the development branch. Local publication, withdrawal, archive, RSS and search tests passed. The first edition and any new notices await reviewed evidence. Keep public activation behind the Phase 2 gate.
+- Phase 4 is staged and passed local profile and duplicate tests. Add the initial organisational profiles after direct first-party review.
+- Phase 5 local health and executive report passed. Confirm hosted branch CI, then use the authorised pull request path. Verify the deployed SHA, scheduled runs and rollback path. Recurring Codex entitlement and execution remain unverified.

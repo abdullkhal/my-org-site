@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss version="2.0">
+  <channel>
+    <title>PIIK Kenya</title>
+    <link>https://piikkenya.com/</link>
+    <description>Kenya's independent property verification and intelligence hub. Access official resources, discover property professionals and stay informed.</description>
+    <language>en-ke</language>
+    <item>
+      <title>What an official land search leaves for a site visit</title>
+      <link>https://piikkenya.com/article-land-search-and-site-check.html</link>
+      <guid>https://piikkenya.com/article-land-search-and-site-check.html</guid>
+      <description>An official record and a visit to the land answer different questions. Plan for both before signing or sending a deposit.</description>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Checking a Kenyan estate agent? Start with the 2026 Gazette</title>
+      <link>https://piikkenya.com/article-estate-agent-gazette.html</link>
+      <guid>https://piikkenya.com/article-estate-agent-gazette.html</guid>
+      <description>The published register is a place to start. Here’s how to use it alongside a current status check and a written mandate.</description>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

@@ -75,7 +75,7 @@ jobs:
             if curl --proto '=https' --proto-redir '=https' --connect-timeout 5 --max-time 10 \
                 --fail --silent --show-error --location "$base/" -o "$response" &&
                 cmp --silent index.html "$response"; then
-              for path in verify.html directory.html weekly.html watch.html knowledge.html sitemap.xml; do
+              for path in verify.html directory.html weekly.html watch.html knowledge.html sitemap.xml feed.xml; do
                 curl --proto '=https' --proto-redir '=https' --connect-timeout 5 --max-time 10 \
                   --fail --silent --show-error --location "$base/$path" -o "$response"
                 cmp "$path" "$response"

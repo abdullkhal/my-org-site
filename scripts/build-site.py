@@ -2,7 +2,8 @@
 """Build and validate the PIIK Kenya static publication."""
 import argparse
 import base64
-from datetime import date
+from datetime import date, datetime, timezone
+from email.utils import format_datetime
 import hashlib
 from html import escape as h
 import json
@@ -16,7 +17,9 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT / "scripts") not in sys.path:
     sys.path.insert(0, str(ROOT / "scripts"))
 
-from intelligence import approved, validate_editions, validate_profiles, validate_registry
+from intelligence import (
+    SECTIONS, approved, publication_controls, require, validate_editions, validate_profiles, validate_registry,
+)
 ORIGIN = "https://piikkenya.com/"
 NAV = [
     ("Home", "index.html"), ("Verify", "verify.html"), ("Directory", "directory.html"),
@@ -26,7 +29,10 @@ INTRO = "Kenya's independent property verification and intelligence hub. Access 
 
 
 def read(name, key):
-    return json.loads((ROOT / f"data/{name}.json").read_text())[key]
+    data = json.loads((ROOT / f"data/{name}.json").read_text())
+    expected_version = 1 if name == "sources" else 2
+    require(data.get("schema_version") == expected_version, f"{name}: unsupported schema version")
+    return data[key]
 
 
 def indexed(records):
@@ -84,7 +90,7 @@ def navigation(section):
     )
 
 
-def page(path, title, description, body, *, section=None, image_key="skyline", schema=None, article=None):
+def page(path, title, description, body, *, section=None, image_key="skyline", schema=None, article=None, indexable=True):
     full_title = f"{title} | PIIK Kenya"
     url = canonical(path)
     schema = json.dumps(schema, ensure_ascii=True).replace("<", "\\u003c") if schema else ""
@@ -104,8 +110,9 @@ def page(path, title, description, body, *, section=None, image_key="skyline", s
 <title>{h(full_title)}</title>
 <meta name="description" content="{h(description)}">
 <meta name="theme-color" content="#FAFAF7">
-{'<meta name="robots" content="noindex,follow">' if path == "search.html" else ""}
+{'<meta name="robots" content="noindex,follow">' if not indexable or path == "search.html" else ""}
 <link rel="canonical" href="{url}">
+<link rel="alternate" type="application/rss+xml" title="PIIK Kenya" href="feed.xml">
 <meta property="og:type" content="{og_type}">
 <meta property="og:title" content="{h(full_title)}">
 <meta property="og:description" content="{h(description)}">
@@ -285,23 +292,47 @@ def references(guide):
     )
 
 
+def source_references(item):
+    review = item.get("review")
+    if not review:
+        source = SOURCES[item["source_id"]]
+        return (f'<p><a href="{https(source["public_url"])}" rel="external noreferrer">'
+                f'Original source: {h(source["authority"])}</a></p>')
+    links = []
+    for source in review["sources"]:
+        published = f' · source published {time(source["published_at"])}' if source["published_at"] else ' · source publication date unavailable'
+        links.append(f'<li><a href="{https(source["url"])}" rel="external noreferrer">'
+                     f'{h(source["organisation"])}</a>{published}</li>')
+    return ('<h2>Original sources</h2><ul>' + "".join(links) + '</ul>'
+            + f'<p><strong>Evidence:</strong> {h(review["evidence"])}</p>'
+            + f'<p><strong>Limitations:</strong> {h(review["limitations"])}</p>')
+
+
+def correction_notes(kind, key):
+    return "".join(
+        f'<p><strong>Update {time(note["published"])}</strong> · {h(note["explanation"])}</p>'
+        for note in corrections_by_target.get((kind, key), [])
+    )
+
+
 def detail_page(path, item, editorial=False):
     title = item["title"]
     if editorial:
         description = item["summary"]
-        source = SOURCES[item["source_id"]]
-        if source["status"] != "verified":
+        source = SOURCES.get(item.get("source_id"))
+        if not item.get("review") and (not source or source["status"] != "verified"):
             raise ValueError(f'Article uses an unreviewed source: {item["id"]}')
         related = "".join(
             f'<li><a href="article-{other["id"]}.html">{h(other["title"])}</a></li>'
             for other in published_articles if other != item
         )
         guides = GUIDES[item["guide_id"]]
+        facts = f'<h2>What happened</h2><p>{h(item["what_happened"])}</p><h2>Who could be affected</h2><p>{h(item["affected"])}</p>' if item.get("review") else ""
         content = f'''<p class="article-date">{time(item["published"])} · {h(item["region"])}</p>
 {f'<p class="article-date">Related event: {h(item["event_date"])}</p>' if item["event_date"] else ''}
 <figure class="article-photo">{image(item["image"], lazy=False)}<figcaption>AI-generated illustration</figcaption></figure>
-<h2>Why it matters</h2><p>{h(item["why"])}</p><h2>What to do next</h2><p>{h(item["next"])}</p>
-<p><a href="{https(source["public_url"])}" rel="external noreferrer">Original source: {h(source["authority"])}</a></p>
+{facts}<h2>Why it matters</h2><p>{h(item["why"])}</p><h2>What to do next</h2><p>{h(item["next"])}</p>
+{source_references(item)}
 <h2>Related reading</h2><ul><li><a href="guide-{guides["id"]}.html">{h(guides["title"])}</a></li>{related}</ul>'''
         key = item["image"]
         schema = {
@@ -314,9 +345,12 @@ def detail_page(path, item, editorial=False):
         description = item["paragraphs"][0]
         key, schema = "skyline", None
         content = "".join(f'<p>{h(paragraph)}</p>' for paragraph in item["paragraphs"][1:])
+        if item.get("review"):
+            content += source_references(item)
         content += f'<h2>Official resources</h2><p>{references(item)}</p><p>Use this guide as general education and seek independent advice for your transaction.</p>'
     header = intro(f'{item["category"]} · {item["kind"]}' if editorial else item["category"], title, description)
-    body = f'{header}<article class="container reading">{content}{share(path, title)}</article>'
+    notes = correction_notes("article" if editorial else "guide", item["id"])
+    body = f'{header}<article class="container reading">{notes}{content}{share(path, title)}</article>'
     return page(path, title, description, body, section="weekly.html" if editorial else "knowledge.html",
                 image_key=key, schema=schema, article=item["published"] if editorial else None)
 
@@ -332,11 +366,23 @@ def notice_card(notice):
     article_id = notice.get("article_id")
     if article_id and article_id not in {article["id"] for article in published_articles}:
         raise ValueError(f"Unpublished related article: {article_id}")
-    path = f"guide-{guide_id}.html" if guide_id else f"article-{article_id}.html"
+    title = h(notice["title"])
+    related = f"guide-{guide_id}.html" if guide_id else f"article-{article_id}.html" if article_id else ""
+    if related:
+        title = f'<a href="{related}">{title}</a>'
+    if review := notice.get("review"):
+        origins = [
+            f'<a href="{https(item["url"])}" rel="external noreferrer">{h(item["organisation"])}</a>'
+            + (f' · source published {time(item["published_at"])}' if item["published_at"] else '')
+            for item in review["sources"]
+        ]
+        source = ('<p>' + ' · '.join(origins) + '</p>'
+                  + f'<p>{h(review["limitations"])}</p><p><strong>Next step:</strong> {h(notice["next"])}</p>')
+    notes = correction_notes("notice", notice["id"])
     return f'''<article class="notice-card" id="{notice["id"]}" data-result>
 <p class="kicker">{h(notice["kind"])} <span>· {h(notice["region"])}</span></p>
-<h3><a href="{path}">{h(notice["title"])}</a></h3>
-<p>{h(notice["summary"])}</p><p class="article-date">Added {time(notice["date"])}{f' · {h(notice["event_date"])}' if notice.get("event_date") else ''}</p>{source}</article>'''
+<h3>{title}</h3>
+<p>{h(notice["summary"])}</p><p class="article-date">Added {time(notice["date"])}{f' · event: {h(notice["event_date"])}' if notice.get("event_date") else ''}</p>{source}{notes}</article>'''
 
 
 def profile_card(profile):
@@ -350,17 +396,27 @@ def profile_card(profile):
         f' · checked {time(registration["checked_at"])}</p>'
         if registration else "<p>Professional registration has yet to be independently checked.</p>"
     )
+    authority = SOURCES[profile["authority_id"]]
+    authority_note = f'<p>Relevant authority: <a href="verify.html#resource-{authority["id"]}">{h(authority["title"])}</a></p>'
     return f'''<article class="notice-card" data-result data-category="{h(profile["category"])}" data-place="{h(profile["location"])}">
 <p class="kicker">{h(profile["category"])} · {h(profile["location"])}</p>
 <h3>{h(profile["name"])}</h3><p>{h(profile["services"])}</p>{site}{contact}
-<p><a href="{https(profile["source"])}" rel="external noreferrer">Public business information source</a> · checked {time(profile["checked_at"])}</p>{registration_note}</article>'''
+<p><a href="{https(profile["source"])}" rel="external noreferrer">Public business information source</a> · checked {time(profile["checked_at"])}</p>{authority_note}{registration_note}<p>{h(profile["review"]["limitations"])}</p>{correction_notes("profile", profile["id"])}</article>'''
 
 
 published_articles = approved(ARTICLES, "article", "published",
                               required="title category kind region summary image why next guide_id")
+for article in published_articles:
+    if article.get("review"):
+        require(all(isinstance(article.get(key), str) and article[key].strip() for key in ("what_happened", "affected")),
+                f'Article {article["id"]} needs facts and affected audiences')
 published_notices = approved(NOTICES, "notice", "date", required="title kind region summary")
-published_profiles = approved(DIRECTORY, "profile", "checked_at",
-                              required="name category location website source services")
+for notice in published_notices:
+    if notice.get("review"):
+        require(notice.get("next") and notice["kind"] in {"Official publication", "PIIK analysis", "Consumer guidance"},
+                f'Notice {notice["id"]} needs a recognised type and next steps')
+published_profiles = approved(DIRECTORY, "profile", "published",
+                              required="name category location website source services checked_at")
 published_editions = approved(EDITIONS, "edition", "published", required="title summary")
 
 validate_registry(read("monitoring", "sources"))
@@ -368,10 +424,72 @@ validate_editions(published_editions, published_articles)
 validate_profiles(published_profiles, CATEGORIES, SOURCES)
 
 
+RECORDS = {"article": ARTICLES, "notice": NOTICES, "guide": ALL_GUIDES, "edition": EDITIONS, "profile": DIRECTORY}
+corrections_by_target = publication_controls(RECORDS, CORRECTIONS)
+
+
+def edition_card(edition):
+    return f'''<article class="notice-card" data-result>
+<p class="kicker">The Kenya Property Brief · {time(edition["published"])}</p>
+<h3><a href="brief-{edition["id"]}.html">{h(edition["title"])}</a></h3><p>{h(edition["summary"])}</p></article>'''
+
+
+def edition_page(path, edition):
+    title = edition["title"]
+    stories = []
+    for section in SECTIONS:
+        for entry in edition["entries"]:
+            if entry["section"] != section:
+                continue
+            story = ARTICLES[entry["article_id"]]
+            guide = GUIDES[story["guide_id"]]
+            stories.append(f'''<section><h2>{section}</h2>
+<h3><a href="article-{story["id"]}.html">{h(story["title"])}</a></h3>
+<p><strong>Reported:</strong> {h(story["what_happened"])}</p>
+<p><strong>Analysis:</strong> {h(story["why"])}</p>
+<p><strong>Who could be affected:</strong> {h(story["affected"])}</p>
+<p><strong>What to check:</strong> {h(story["next"])}</p>
+<p>PIIK story published {time(story["published"])}{f' · event {time(story["event_date"])}' if story["event_date"] else ''}</p>
+{source_references(story)}<p><a href="guide-{guide["id"]}.html">{h(guide["title"])}</a></p></section>''')
+    header = intro("The Kenya Property Brief · By PIIK Kenya", title, edition["summary"])
+    notes = correction_notes("edition", edition["id"])
+    body = (
+        f'{header}<article class="container reading">{notes}<p>Published {time(edition["published"])}</p>'
+        + "".join(stories) + share(path, title) + "</article>"
+    )
+    schema = {"@context": "https://schema.org", "@type": "Article", "headline": title,
+              "datePublished": edition["published"], "mainEntityOfPage": canonical(path),
+              "author": {"@type": "Organization", "name": "PIIK Kenya"}}
+    return page(path, title, edition["summary"], body, section="weekly.html", schema=schema,
+                article=edition["published"])
+
+
+def rss():
+    root = ET.Element("rss", version="2.0")
+    channel = ET.SubElement(root, "channel")
+    for key, value in {"title": "PIIK Kenya", "link": ORIGIN, "description": INTRO, "language": "en-ke"}.items():
+        ET.SubElement(channel, key).text = value
+    entries = [
+        (item["published"], f'{prefix}-{item["id"]}.html', item)
+        for prefix, records in (("article", published_articles), ("brief", published_editions))
+        for item in records
+    ]
+    for published, path, item in sorted(entries, key=lambda entry: entry[:2], reverse=True)[:30]:
+        node = ET.SubElement(channel, "item")
+        pub_date = format_datetime(datetime.fromisoformat(published).replace(tzinfo=timezone.utc), usegmt=True)
+        for key, value in {"title": item["title"], "link": canonical(path), "guid": canonical(path),
+                           "description": item["summary"], "pubDate": pub_date}.items():
+            ET.SubElement(node, key).text = value
+    ET.indent(root)
+    return ET.tostring(root, encoding="unicode", xml_declaration=True) + "\n"
+
+
 def build():
     pages = {}
     lead = article_card(published_articles[0]) if published_articles else "<p>Articles will appear here after editorial review.</p>"
     latest = "".join(article_card(item, with_image=False) for item in published_articles[1:3])
+    if published_editions:
+        latest = edition_card(published_editions[0]) + latest
     watch_item = notice_card(published_notices[0]) if published_notices else ""
     service_cards = "".join(
         f'<a class="service-link service-{key}" href="{path}"><span class="service-icon">{icon(key)}</span>'
@@ -418,7 +536,7 @@ def build():
     pages["directory.html"] = page("directory.html", "Kenyan property professional directory",
         "Discover the Kenyan bodies that maintain professional registers and browse reviewed business profiles as they become available.",
         intro("PIIK Directory", "Find property professionals.", "Browse by profession and check practising status directly with the relevant authority.")
-        + f'<section class="container editorial-section"><h2>Business profiles</h2>{profiles}'
+        + f'<section class="container editorial-section"><h2>Business profiles</h2><p>Directory inclusion offers business discovery only. It does not represent endorsement, certification or confirmation of investment safety.</p>{profiles}'
         + '<h2>Professional registers</h2><p>Use these registers for discovery where available. Ask the relevant authority about current practising status.</p>'
         + '<ul class="register-links">' + "".join(
             f'<li><a href="verify.html#resource-{key}">{h(label)}</a></li>'
@@ -429,13 +547,13 @@ def build():
             ]
         ) + '</ul></section>', image_key="collaboration")
 
-    roundups = [article_card(item, with_image=False) for item in published_articles if item["kind"] == "Weekly market roundup"]
+    roundups = [edition_card(item) for item in published_editions]
     pages["weekly.html"] = page("weekly.html", "Property news and market intelligence",
         "Browse PIIK Kenya’s property intelligence, original analysis and weekly market roundups when available.",
         intro("PIIK Weekly", "Kenyan property intelligence.", "Read sourced analysis and follow developments that matter to buyers, renters and property professionals.")
         + f'<section class="container editorial-section"><h2>Featured</h2><div class="featured-story">{lead}</div></section>'
-        + '<section class="container editorial-section"><h2>Weekly market roundup</h2>'
-        + (''.join(roundups) if roundups else '<p>The first market roundup is awaiting reviewed source material.</p>')
+        + '<section class="container editorial-section"><h2>The Kenya Property Brief</h2><p>By PIIK Kenya · <a href="feed.xml">Subscribe via RSS</a></p>'
+        + (''.join(roundups) if roundups else '<p>The first edition is awaiting reviewed source material.</p>')
         + '</section><section class="container editorial-section"><h2>Latest articles and archive</h2>'
         + indexed_list("article-search", "Search the archive", "Try regulation or land", [article_card(a) for a in published_articles], "No published articles.")
         + '</section>')
@@ -464,6 +582,7 @@ def build():
         f'<p>{description}</p></article>' for _, label, name, description, path in SERVICES
     ] + [card.replace(f'id="guide-{key}"', "") for key, card in zip(GUIDES, guide_cards)]
     search_cards += [article_card(article, with_image=False) for article in published_articles]
+    search_cards += [edition_card(edition) for edition in published_editions]
     search_cards += [
         f'<article class="notice-card" data-result data-search="{h(RESOURCE_SEARCH.get(key, key))}"><p class="kicker">Official resource</p>'
         f'<h3><a href="verify.html#resource-{key}">{h(source["title"])} · {h(source["authority"])}</a></h3>'
@@ -485,12 +604,38 @@ def build():
         path = f"guide-{key}.html"
         pages[path] = detail_page(path, guide)
 
+    for edition in published_editions:
+        path = f'brief-{edition["id"]}.html'
+        pages[path] = edition_page(path, edition)
+
+    for kind, index_path in (("notice", "watch.html"), ("profile", "directory.html")):
+        retired = "".join(
+            f'<article class="notice-card" id="{key}"><h3>Entry withdrawn</h3>{correction_notes(kind, key)}</article>'
+            for key, record in RECORDS[kind].items() if record["status"] == "withdrawn"
+        )
+        if retired:
+            section = f'<section class="container editorial-section"><h2>Withdrawn entries</h2>{retired}</section>'
+            pages[index_path] = pages[index_path].replace("</main>", section + "</main>")
+
+    retired_pages = set()
+    for kind, prefix, parent in (("article", "article", "weekly.html"), ("guide", "guide", "knowledge.html"),
+                                 ("edition", "brief", "weekly.html")):
+        for key, record in RECORDS[kind].items():
+            if record["status"] == "withdrawn":
+                path = f"{prefix}-{key}.html"
+                body = intro("PIIK Kenya", "Publication withdrawn", "This publication has been withdrawn.")
+                body += f'<section class="container reading">{correction_notes(kind, key)}<a href="{parent}">Browse current material</a></section>'
+                pages[path] = page(path, "Publication withdrawn", "PIIK Kenya withdrawal notice.", body,
+                                   section=parent, indexable=False)
+                retired_pages.add(path)
+
     sitemap = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
     for path in [*pages, "terms.html", "privacy.html", "credits.html"]:
-        if path != "search.html":
+        if path != "search.html" and path not in retired_pages:
             ET.SubElement(ET.SubElement(sitemap, "url"), "loc").text = canonical(path)
     ET.indent(sitemap)
     pages["sitemap.xml"] = ET.tostring(sitemap, encoding="unicode", xml_declaration=True) + "\n"
+    pages["feed.xml"] = rss()
     return pages
 
 
@@ -500,10 +645,12 @@ def main():
     args = parser.parse_args()
     pages = build()
     obsolete = [
-        path for pattern in ("article-*.html", "guide-*.html") for path in ROOT.glob(pattern)
+        path for pattern in ("article-*.html", "guide-*.html", "brief-*.html") for path in ROOT.glob(pattern)
         if path.name not in pages and "<!-- Generated by scripts/build-site.py -->" in path.read_text()
     ]
     if args.check:
+        if any(item["status"] == "draft" for records in RECORDS.values() for item in records.values()):
+            raise SystemExit("Draft records must stay outside the public checkout.")
         changed = [name for name, body in pages.items() if not (ROOT / name).exists() or (ROOT / name).read_text() != body]
         changed += [path.name for path in obsolete]
         if changed:

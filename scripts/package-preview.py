@@ -26,7 +26,7 @@ def main():
             add_page(archive, html)
         assets = [ROOT / "assets" / name for name in ("piik-logo.webp", "favicon.svg")]
         assets += sorted((ROOT / "assets/imagery").glob("*.webp"))
-        for path in [*(ROOT / name for name in ("style.css", "editorial.css", "app.js", "editorial.js")), *assets]:
+        for path in [*(ROOT / name for name in ("style.css", "editorial.css", "app.js", "editorial.js", "feed.xml")), *assets]:
             archive.write(path, path.relative_to(ROOT).as_posix())
         archive.writestr("READ-ME.txt", "Extract all files into one folder. Run python3 -m http.server in that folder and open the local address. This is a review copy of PIIK Kenya.\n")
         archive.writestr("robots.txt", "User-agent: *\nDisallow: /\n")

@@ -110,7 +110,9 @@ def validate_editions(editions, articles):
             require(article.get("review") and article["published"] <= edition["published"],
                     f"{label}: story needs current reviewed evidence")
             seen.add(key)
-        iso(edition.get("reviewed_at"), label)
+        reviewed = iso(edition.get("reviewed_at"), label)
+        require(all(iso(published[key]["review"]["reviewed_at"], label) <= reviewed for key in seen),
+                f"{label}: edition reviewed before story evidence")
         fields(edition, "reviewer", label)
         require(edition["reviewed_at"] <= edition["published"], f"{label}: publication precedes review")
 
@@ -121,6 +123,7 @@ def validate_profiles(profiles, categories, authorities):
         label = f'profile {profile["id"]}'
         require(profile["category"] in categories, f"{label}: unknown category")
         require(profile.get("authority_id") in authorities, f"{label}: unknown registration authority")
+        require(profile["checked_at"] == profile["review"]["reviewed_at"], f"{label}: last review dates disagree")
         site = https_url(profile["website"], label).hostname.lower().removeprefix("www.")
         name = " ".join(re.findall(r"\w+", profile["name"].casefold()))
         require(name and name not in names and site not in websites, f"{label}: duplicate organisation")
@@ -138,6 +141,8 @@ def validate_profiles(profiles, categories, authorities):
 
 
 def validate_registry(records):
+    require(sum(record.get("enabled") is True for record in records) <= 12,
+            "source registry: at most 12 monitored sources per run")
     seen = set()
     for record in records:
         fields(record, "id owner url category reliability status method expected_frequency access_limitations", "source registry")
@@ -160,3 +165,23 @@ def validate_registry(records):
             require(record["path_prefix"].startswith("/") and not record["path_prefix"].startswith("//"),
                     f"{key}: invalid item path prefix")
             require(record["method"] in {"notice_index", "rss", "atom"}, f"{key}: unsupported monitoring method")
+
+
+def publication_controls(groups, corrections):
+    notes = {}
+    for key, correction in corrections.items():
+        label = f"correction {key}"
+        fields(correction, "target_kind target_id explanation reviewer published", label)
+        identity = (correction["target_kind"], correction["target_id"])
+        target = groups.get(identity[0], {}).get(identity[1])
+        require(target and target["status"] in {"approved", "withdrawn"}, f"{label}: unknown public target")
+        published = iso(correction["published"], label)
+        require(published <= date.today(), f"{label}: future correction")
+        notes.setdefault(identity, []).append(correction)
+    for kind, records in groups.items():
+        for key, record in records.items():
+            if record["status"] == "withdrawn":
+                require(set(record) == {"id", "status"}, f"{kind} {key}: remove withdrawn content from the record")
+                require((kind, key) in notes, f"{kind} {key}: withdrawal requires a public explanation")
+    return {key: sorted(records, key=lambda item: item["published"], reverse=True)
+            for key, records in notes.items()}

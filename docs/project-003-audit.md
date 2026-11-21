@@ -13,3 +13,7 @@
 | Prior operations | Reviewed the existing editorial runbook, launch and visual reviews, source registry, and Phase 2 verification, handover and deferred-enquiry material. Existing enquiry, analytics and payment posture is inactive. |
 
 Cloud Git authenticated for a read of `main`. GitHub API run listing and the custom-domain connection were denied from this runtime. Browser and accessibility coverage is established by the onboarding baseline and must be rerun against this branch before release.
+
+## Baseline deployment corroboration
+
+GitHub recorded a successful [Pages deployment](https://github.com/abdullkhal/my-org-site/actions/runs/44919803560) and [production smoke run](https://github.com/abdullkhal/my-org-site/actions/runs/44919804192) for `9ac2d2bc79e6331e37a0c19cc927d970a747ffb4`. This confirms the baseline deployment and parity at the run. Direct verification from this cloud task remains restricted. The [prior monitoring workflow run](https://github.com/abdullkhal/my-org-site/actions/runs/44919804108) also succeeded, but its configured discovery sources were disabled.

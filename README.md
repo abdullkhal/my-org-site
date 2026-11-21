@@ -27,6 +27,10 @@ node tests/official-hub.cjs
 node tests/integration-preparation.cjs
 ```
 
+## Project 003 operations
+
+Start with [AGENTS.md](AGENTS.md), the [roadmap](ROADMAP.md) and the [operating commands](docs/OPERATIONS.md).
+
 ## Maintain and publish
 
 Edit source templates in `site/` and reviewed content in `data/`. Regenerate the site and sitemap with `python3 scripts/build-site.py`. For changes to the verification register, also run `python3 scripts/render-source-review.py`. Commit the inputs and the generated output together. See [editorial operations](docs/editorial-operations.md) for data review, automation, publication and rollback.
