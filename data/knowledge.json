@@ -175,6 +175,74 @@
         "consumer"
       ],
       "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication."
+    },
+    {
+      "id": "companies",
+      "title": "Investigate the company behind a property deal",
+      "category": "Companies",
+      "paragraphs": [
+        "Ask which legal entity will sign the contract and receive funds. Use the appropriate BRS service to check its records and compare the details with the agreement.",
+        "Have your advocate check who may sign and whether another entity owns the property or holds approvals. Keep current official records with your transaction documents."
+      ],
+      "source_ids": [
+        "brs",
+        "lsk"
+      ]
+    },
+    {
+      "id": "rental-deposit",
+      "title": "Before you pay a rental deposit",
+      "category": "Renting",
+      "paragraphs": [
+        "View the property and check that the landlord or agent has authority to let it. Ask for a written lease, deposit terms, an inventory and an official receipt.",
+        "Confirm the recipient’s details through a separate channel. Check the refund conditions and any deductions before making a payment."
+      ],
+      "source_ids": [
+        "earb",
+        "lsk"
+      ]
+    },
+    {
+      "id": "commercial-costs",
+      "title": "Commercial premises, service charges and goodwill",
+      "category": "Commercial property",
+      "paragraphs": [
+        "Build an occupancy budget that includes rent, deposit, service charges, fit-out, utilities, taxes and any requested goodwill payment. Ask who receives each payment and what it buys.",
+        "Have an advocate review the lease, permitted use, rent review, exit terms and any assignment. Seek an independent valuation where appropriate and confirm approvals for your intended use."
+      ],
+      "source_ids": [
+        "lsk",
+        "vrb",
+        "approvals"
+      ]
+    },
+    {
+      "id": "construction-approvals",
+      "title": "Check the approvals for a construction project",
+      "category": "Development",
+      "paragraphs": [
+        "Ask the relevant county how to confirm its planning and building approvals for the site. Match approvals against the actual location, applicant and plans.",
+        "Check project registration and contractor registration separately with NCA. Ask whether environmental review applies and confirm any requirements with the responsible authority."
+      ],
+      "source_ids": [
+        "approvals",
+        "nca",
+        "nema"
+      ]
+    },
+    {
+      "id": "buying-checks",
+      "title": "Before you commit to a property purchase",
+      "category": "Buying property",
+      "paragraphs": [
+        "Identify the seller and parcel, arrange a visit and ask an independent advocate about the appropriate official search and required consents.",
+        "Budget for transaction costs and get the signed agreement reviewed before money moves. Discuss how deposits and completion payments will be protected."
+      ],
+      "source_ids": [
+        "lsk",
+        "ardhisasa",
+        "lsb"
+      ]
     }
   ]
 }

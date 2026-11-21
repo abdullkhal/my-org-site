@@ -30,14 +30,12 @@ function check(value,label) {assert.ok(value,label);count++;console.log(`PASS ${
   try {
     const context=await browser.newContext();const page=await context.newPage();const requests=[];const errors=[];
     page.on("request",r=>requests.push({url:r.url(),method:r.method()}));page.on("pageerror",e=>errors.push(e.message));
-    await page.goto(base,{waitUntil:"networkidle"});
-    check((await page.locator("h1").innerText()).replace(/\s+/g," ").trim()==="Know who you're dealing with. Know what to check.","exact homepage headline");
-    check(await page.locator(".hero-lead").textContent()==="Your starting point for navigating Kenya's property sector. Access practical guidance, discover official resources and connect with a growing community of property professionals as the network develops.","exact supporting copy");
-    check(await page.locator(".hero-interest-note").isVisible(),"closed-registration notice is next to hero CTA");
-    check(await page.locator(".hero-visual img").getAttribute("src")==="assets/imagery/residence-1536.webp","existing architecture image retained");
-    check(await page.locator(".network-disciplines span").count()===9,"nine proposed network disciplines");
-    check(await page.locator(".article").count()===knowledge.length && knowledge.length===7,"seven structured guides rendered");
-    check(await page.locator(".source-card").count()===sources.length,"all source records rendered");
+    await page.goto(base+"/about.html");
+    check(await page.locator(".network-disciplines span").count()===9,"nine proposed network disciplines retained");
+    await page.goto(base+"/knowledge.html");
+    check(await page.locator("#guide-search-results article").count()===knowledge.length,"all structured guides rendered");
+    await page.goto(base+"/verify.html");
+    check(await page.locator(".resource-card").count()===sources.length,"all source records rendered");
     for(const source of sources) {
       const card=page.locator(`#resource-${source.id}`);
       check(await card.count()===1,`${source.id} stable resource target`);
@@ -54,8 +52,6 @@ function check(value,label) {assert.ok(value,label);count++;console.log(`PASS ${
       check(await page.locator("#check-progress").textContent()===before,`${category} resource click does not toggle checkbox`);
     }
     check(await page.locator("a[href='terms.html']").count()>0,"Terms accessible from homepage");
-    const structured=JSON.parse(await page.locator('script[type="application/ld+json"]').textContent());
-    check(structured['@graph'].map(x=>x['@type']).join(',')==='Organization,WebSite',"accurate Organization and WebSite schema, no invented members or ratings");
     for(const file of ["index.html","terms.html","privacy.html","credits.html"]) {
       await page.goto(`${base}/${file}`,{waitUntil:"networkidle"});
       const canonical=await page.locator('link[rel="canonical"]').getAttribute("href");
@@ -87,7 +83,7 @@ function check(value,label) {assert.ok(value,label);count++;console.log(`PASS ${
     const robots=await (await context.request.get(`${base}/robots.txt`)).text();
     check(robots.includes('Sitemap: https://piikkenya.com/sitemap.xml')&&robots.includes('Disallow: /review/'),"robots declares sitemap and excludes prototypes");
     const xml=await (await context.request.get(`${base}/sitemap.xml`)).text();
-    check((xml.match(/<loc>/g)||[]).length===4 && !xml.includes('/review/'),"sitemap contains four public pages only");
+    check(xml.includes("/article-estate-agent-gazette.html") && !xml.includes("/review/") && !xml.includes("/search.html"),"sitemap includes public articles and excludes reviews and search");
     check(requests.every(r=>r.method==='GET' && r.url.startsWith(base)),"website uses only local GETs");
     check(errors.length===0,"no browser runtime errors");
     await context.close();

@@ -51,7 +51,7 @@ function check(value, label) {
       page.on("request", (r) => requests.push(r.url()));
       await page.goto(base, { waitUntil: "networkidle" });
       const firstLoad = await page.evaluate(() => ({
-        hero: document.querySelector(".hero-visual img").currentSrc,
+        hero: document.querySelector(".hero-photo img").currentSrc,
         bytes: performance
           .getEntriesByType("resource")
           .reduce((n, r) => n + r.encodedBodySize, 0),
@@ -64,10 +64,10 @@ function check(value, label) {
       check(
         firstLoad.hero.endsWith(
           label === "desktop"
-            ? "residence-1536.webp"
+            ? "skyline-1024.webp"
             : label === "mobile"
-              ? "residence-640.webp"
-              : "residence-1024.webp",
+              ? "skyline-640.webp"
+              : "skyline-1024.webp",
         ),
         `${label} chooses an appropriate hero image size`,
       );
@@ -77,8 +77,8 @@ function check(value, label) {
       );
       const photos = page.locator("main img");
       check(
-        (await photos.count()) === 6,
-        `${label} renders all six editorial contexts`,
+        (await photos.count()) === 2,
+        `${label} renders homepage editorial images`,
       );
       for (const img of await photos.all()) {
         check(
@@ -147,17 +147,15 @@ function check(value, label) {
           .querySelector(".hero-copy")
           .getBoundingClientRect();
         const frame = document
-          .querySelector(".hero-visual")
+          .querySelector(".hero-photo")
           .getBoundingClientRect();
         return (
-          copy.bottom <= frame.bottom &&
-          copy.right <= frame.right &&
-          copy.top >= frame.top
+          copy.right <= frame.left && copy.width > 0 && frame.width > 0
         );
       });
       check(
         bounds,
-        `desktop hero content remains inside its image frame at ${width}px`,
+        `desktop hero copy and image remain split at ${width}px`,
       );
     }
     await p.close();

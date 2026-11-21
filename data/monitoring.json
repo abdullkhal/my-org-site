@@ -1,0 +1,11 @@
+{
+  "sources": [
+    {"id": "earb", "owner": "Estate Agents Registration Board", "url": "https://estateagentsboard.or.ke/", "enabled": false},
+    {"id": "lands", "owner": "State Department for Lands and Physical Planning", "url": "https://lands.go.ke/", "enabled": false},
+    {"id": "knbs", "owner": "Kenya National Bureau of Statistics", "url": "https://www.knbs.or.ke/", "enabled": false},
+    {"id": "cbk", "owner": "Central Bank of Kenya", "url": "https://www.centralbank.go.ke/", "enabled": false},
+    {"id": "nca", "owner": "National Construction Authority", "url": "https://www.nca.go.ke/", "enabled": false},
+    {"id": "gazette", "owner": "Kenya Law", "url": "https://new.kenyalaw.org/gazettes/", "enabled": false},
+    {"id": "nairobi", "owner": "Nairobi City County", "url": "https://nairobi.go.ke/", "enabled": false}
+  ]
+}

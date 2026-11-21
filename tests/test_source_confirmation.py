@@ -1,6 +1,7 @@
 """Synthetic source-review fixtures only; never confirms a real authority."""
 import importlib.util
 import json
+import runpy
 import subprocess
 import tempfile
 import unittest
@@ -47,15 +48,10 @@ class SourceConfirmationTests(unittest.TestCase):
 
     def test_confirmed_link_renders_despite_network_block(self):
         result = module.confirm_source(self.source, **self.args)
-        with tempfile.TemporaryDirectory() as temp:
-            temp = Path(temp)
-            (temp/'scripts').mkdir(); (temp/'data').mkdir()
-            (temp/'scripts/render-content.py').write_text((ROOT/'scripts/render-content.py').read_text())
-            (temp/'data/sources.json').write_text(json.dumps({'sources':[result]}))
-            (temp/'data/knowledge.json').write_text(json.dumps({'guides':[]}))
-            (temp/'index.html').write_text('<!-- SOURCES:START --><!-- SOURCES:END --><!-- KNOWLEDGE:START --><!-- KNOWLEDGE:END -->')
-            subprocess.run(['python3',str(temp/'scripts/render-content.py')],check=True)
-            self.assertIn('href="https://example.invalid/register"', (temp/'index.html').read_text())
+        builder = runpy.run_path(str(ROOT/'scripts/build-site.py'))
+        card = builder['resource_card'](result)
+        self.assertIn('href="https://example.invalid/register"', card)
+        self.assertIn('Review recorded', card)
 
     def test_cli_defaults_to_dry_run(self):
         with tempfile.TemporaryDirectory() as temp:

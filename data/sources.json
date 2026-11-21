@@ -39,7 +39,11 @@
       "research_date": null,
       "research_date_note": "Founder research date not specified; checked_at is the date the supplied destination was reviewed and recorded in this project.",
       "resource_kind": "Published 2026 register",
-      "link_label": "Read 2026 Gazette publication →"
+      "link_label": "Read 2026 Gazette publication →",
+      "pending_destination": {
+        "label": "EARB member directory",
+        "url": "https://members.estateagentsboard.or.ke/directory"
+      }
     },
     {
       "id": "ardhisasa",

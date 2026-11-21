@@ -5,4 +5,5 @@ Disallow: /data/
 Disallow: /docs/
 Disallow: /tests/
 Disallow: /scripts/
+Disallow: /site/
 Sitemap: https://piikkenya.com/sitemap.xml

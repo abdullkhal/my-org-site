@@ -18,13 +18,14 @@ let checks=0;function check(value,label){assert.ok(value,label);checks++;console
 (async()=>{
  const browser=await chromium.launch({executablePath:process.env.PIIK_CHROMIUM||'/usr/bin/chromium',args:['--no-sandbox']});
  try{
+  require('node:fs').mkdirSync(output,{recursive:true});
   const context=await browser.newContext();const page=await context.newPage();const intercepted=[];
   await context.route('https://**/*',route=>{
    const url=route.request().url();intercepted.push(url);
    if(!Object.values(approved).flat().includes(url))return route.abort();
    return route.fulfill({status:200,contentType:'text/html',body:'<!doctype html><html><head><title>Synthetic destination</title><link rel="icon" href="data:,"></head><body><h1>Offline navigation fixture</h1></body></html>'});
   });
-  await page.goto(base);
+  await page.goto(base+"/verify.html");
   check(await page.locator('#official-hub a[href^="https:"]').count()===9,'exactly nine researched external links, covering eight authorities');
   for(const [id,urls] of Object.entries(approved)){
    const record=sources.find(s=>s.id===id);
@@ -40,13 +41,13 @@ let checks=0;function check(value,label){assert.ok(value,label);checks++;console
   for(const id of ['lsb','boraqs'])check((await page.locator('#resource-'+id).textContent()).includes('published register')||(await page.locator('#resource-'+id).textContent()).includes('published listings'),id+' explains published register limits');
   check((await page.locator('#resource-nca').textContent()).includes('separate from project registration'),'NCA contractor listing does not imply project registration');
   for(const url of Object.values(approved).flat()){
-   await page.goto(base+'/#official-hub');
+   await page.goto(base+'/verify.html#official-hub');
    await page.locator(`#official-hub a[href="${url}"]`).click();
    await page.waitForURL(url);
    check(page.url()===url,'outbound click reaches exactly the supplied destination (intercepted offline)');
   }
   check(intercepted.length===9,'all nine clicks were tested with offline interception, not live-site validation');
-  await page.goto(base+'/#official-hub');await page.setViewportSize({width:1440,height:1000});
+  await page.goto(base+'/verify.html#official-hub');await page.setViewportSize({width:1440,height:1000});
   await page.locator('#official-hub').screenshot({path:output+'/official-hub-desktop.png'});
   await page.setViewportSize({width:390,height:844});
   check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'expanded resource actions fit mobile');
