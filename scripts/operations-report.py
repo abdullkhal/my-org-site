@@ -63,22 +63,24 @@ def report(queue, health, today):
     statuses = Counter(item["outcome"] for item in queue.get("official_link_health", []))
     queue_date = queue.get("date")
     inactive = not queue_date or date.fromisoformat(queue_date) < today - timedelta(days=2)
+    link_health = ", ".join(f"{count} {status}" for status, count in sorted(statuses.items())) or "unavailable"
+    site_results = ", ".join(f"{name} {status}" for name, status in health) or "unavailable"
     lines = [
         f"# PIIK Kenya weekly executive report — {today}",
         "",
-        f"- Leads in the latest queue: {len(leads)}. These await evidence review.",
-        f'- Published this week: {recent(editorial["articles"], "published", today)} articles, '
+        f"- The latest queue contains {len(leads)} leads awaiting evidence review.",
+        f'- This week PIIK published {recent(editorial["articles"], "published", today)} articles, '
         f'{recent(editorial["editions"], "published", today)} Brief editions and '
         f'{recent(editorial["notices"], "date", today)} Watch entries.',
-        f'- Directory profiles: {recent(profiles, "published", today)} added, '
-        f'{recent(profiles, "checked_at", today)} reviewed this week.',
-        f'- Collection: {queue.get("successful_sources", 0)}/{queue.get("enabled_sources", 0)} sources succeeded, '
-        f'{len(errors)} collector errors.',
-        f'- Link checks: {", ".join(f"{count} {status}" for status, count in sorted(statuses.items())) or "unavailable"}.',
-        f'- Website checks: {", ".join(f"{name} {status}" for name, status in health) or "unavailable"}.',
-        "- Collection activity: " + ("latest report missing or overdue." if inactive else f"latest report dated {queue_date}."),
-        "- Founder decisions: review only the sensitive or disputed items raised in the weekly editorial cycle.",
-        "- Cost and security: repository workflows use existing services and no AI API. Review repository usage separately.",
+        f'- The Directory added {recent(profiles, "published", today)} profiles and recorded '
+        f'{recent(profiles, "checked_at", today)} reviews this week.',
+        f'- Collection succeeded for {queue.get("successful_sources", 0)} of {queue.get("enabled_sources", 0)} '
+        f'enabled sources and reported {len(errors)} errors.',
+        f'- Official link check results are {link_health}.',
+        f'- Website check results are {site_results}.',
+        "- The collection report is missing or overdue." if inactive else f"- The latest collection report is dated {queue_date}.",
+        "- Bring sensitive or disputed editorial decisions to the founder after evidence review.",
+        "- The repository workflows use existing services and no AI API.",
         "",
         "## Exceptions and next priority",
         "",
