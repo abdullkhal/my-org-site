@@ -1,6 +1,13 @@
 name: Review public sources
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/monitoring.json'
+      - 'data/sources.json'
+      - 'scripts/monitor-sources.py'
+      - '.github/workflows/source-review.yml'
   schedule:
     - cron: '25 6 * * 2,5'
   workflow_dispatch:

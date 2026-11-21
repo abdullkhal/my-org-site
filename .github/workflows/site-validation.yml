@@ -57,3 +57,35 @@ jobs:
             ${{ runner.temp }}/piik-test-output
             ${{ runner.temp }}/piik-server.log
           if-no-files-found: ignore
+
+  production-smoke:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Verify the exact release on the public domain
+        run: |
+          base="https://piikkenya.com"
+          response="$RUNNER_TEMP/piik-production.html"
+          for attempt in {1..24}; do
+            if curl --proto '=https' --proto-redir '=https' --connect-timeout 5 --max-time 10 \
+                --fail --silent --show-error --location "$base/" -o "$response" &&
+                cmp --silent index.html "$response"; then
+              for path in verify.html directory.html weekly.html watch.html knowledge.html sitemap.xml; do
+                curl --proto '=https' --proto-redir '=https' --connect-timeout 5 --max-time 10 \
+                  --fail --silent --show-error --location "$base/$path" -o "$response"
+                cmp "$path" "$response"
+                echo "Verified $base/$path"
+              done
+              echo "Verified homepage and service pages from $GITHUB_SHA"
+              exit 0
+            fi
+            echo "Deployment or CDN propagation pending (attempt $attempt)"
+            sleep 10
+          done
+          echo "::error::The public homepage did not match the release"
+          exit 1
