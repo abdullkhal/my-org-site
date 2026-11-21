@@ -13,3 +13,6 @@ Work in order. Enable dependent public features after the previous phase passes 
 ## Checkpoint
 
 The baseline and initial risks are in [the audit](docs/project-003-audit.md). See [the changelog](docs/CHANGELOG.md) for implementation and verification evidence.
+
+- Phase 1 local gate passed. Verification of candidate research destinations remains source-by-source.
+- Phase 2 implementation and fixture tests passed. The real-source and hosted-schedule gates are open. Activate individual sources only after permission, access and first-party evidence review.

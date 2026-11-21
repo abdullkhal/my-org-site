@@ -12,3 +12,11 @@ Each role uses repository instructions and release-safe evidence. Run determinis
 | Quality and operations | Local tests, deployment and source reports | Website health and one executive report; no source promotion | Escalate consolidated exceptions, retain working release |
 
 No recurring Codex or ChatGPT editorial entitlement has been verified in this environment. The weekly Codex command is the manual editorial handoff. GitHub Actions can collect and validate deterministically.
+
+## Collection schedule and evidence
+
+**Review public sources** defines daily collection at 06:25 UTC, a Saturday collection and link review at 06:40 UTC, and a monthly registry and link review at 06:55 UTC on the first. Its manual run accepts any of the three modes.
+
+The workflow retains a small rolling candidate queue and source fingerprints. It stores links, dates and identifiers only. Candidates are leads. A changed index, an HTTP response and official factual review have separate meanings. The cache can expire and recreate a baseline. Check the latest successful run and artifact before the weekly cycle. A missed run or missing artifact is an operations exception.
+
+Enable a source only after documenting first-party identity, robots and site terms, reviewing the actual public index or feed, and setting its path prefix and latest successful check. Current sources remain pending or reference-only. The cloud proxy denied the known launch destinations, so this session verified collection and failure handling with fixtures and ran the production configuration in inactive mode. GitHub schedule execution for the replacement workflow remains unconfirmed.

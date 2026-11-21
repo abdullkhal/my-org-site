@@ -156,5 +156,7 @@ def validate_registry(records):
         if record["enabled"]:
             require(record["status"] == "monitoring_approved" and record["last_successful_check"],
                     f"{key}: monitoring approval and successful review required")
-            fields(record, "access_review", key)
+            fields(record, "access_review path_prefix", key)
+            require(record["path_prefix"].startswith("/") and not record["path_prefix"].startswith("//"),
+                    f"{key}: invalid item path prefix")
             require(record["method"] in {"notice_index", "rss", "atom"}, f"{key}: unsupported monitoring method")
