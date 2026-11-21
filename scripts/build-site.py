@@ -8,10 +8,15 @@ from html import escape as h
 import json
 from pathlib import Path
 import re
+import sys
 from urllib.parse import quote, urlsplit
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT / "scripts") not in sys.path:
+    sys.path.insert(0, str(ROOT / "scripts"))
+
+from intelligence import approved, validate_editions, validate_profiles, validate_registry
 ORIGIN = "https://piikkenya.com/"
 NAV = [
     ("Home", "index.html"), ("Verify", "verify.html"), ("Directory", "directory.html"),
@@ -185,21 +190,16 @@ RESOURCE_SEARCH = {
 }
 
 SOURCES = indexed(read("sources", "sources"))
-GUIDES = indexed(read("knowledge", "guides"))
+ALL_GUIDES = indexed(read("knowledge", "guides"))
+GUIDES = {guide["id"]: guide for guide in approved(
+    ALL_GUIDES, "guide", "published", required="title category"
+)}
 ARTICLES = indexed(read("editorial", "articles"))
 NOTICES = indexed(read("editorial", "notices"))
+EDITIONS = indexed(read("editorial", "editions"))
+CORRECTIONS = indexed(read("editorial", "corrections"))
 DIRECTORY = indexed(read("directory", "profiles"))
 CATEGORIES = read("directory", "categories")
-
-
-def sorted_approved(records, field):
-    for record in records.values():
-        if record["status"] not in {"draft", "approved"}:
-            raise ValueError(f'Unknown review status: {record["id"]}')
-    return sorted(
-        (record for record in records.values() if record["status"] == "approved"),
-        key=lambda record: date.fromisoformat(record[field]), reverse=True,
-    )
 
 
 def intro(label, heading, description, actions=""):
@@ -318,7 +318,7 @@ def detail_page(path, item, editorial=False):
     header = intro(f'{item["category"]} · {item["kind"]}' if editorial else item["category"], title, description)
     body = f'{header}<article class="container reading">{content}{share(path, title)}</article>'
     return page(path, title, description, body, section="weekly.html" if editorial else "knowledge.html",
-                image_key=key, schema=schema, article=item.get("published"))
+                image_key=key, schema=schema, article=item["published"] if editorial else None)
 
 
 def notice_card(notice):
@@ -356,9 +356,16 @@ def profile_card(profile):
 <p><a href="{https(profile["source"])}" rel="external noreferrer">Public business information source</a> · checked {time(profile["checked_at"])}</p>{registration_note}</article>'''
 
 
-published_articles = sorted_approved(ARTICLES, "published")
-published_notices = sorted_approved(NOTICES, "date")
-published_profiles = sorted_approved(DIRECTORY, "checked_at")
+published_articles = approved(ARTICLES, "article", "published",
+                              required="title category kind region summary image why next guide_id")
+published_notices = approved(NOTICES, "notice", "date", required="title kind region summary")
+published_profiles = approved(DIRECTORY, "profile", "checked_at",
+                              required="name category location website source services")
+published_editions = approved(EDITIONS, "edition", "published", required="title summary")
+
+validate_registry(read("monitoring", "sources"))
+validate_editions(published_editions, published_articles)
+validate_profiles(published_profiles, CATEGORIES, SOURCES)
 
 
 def build():

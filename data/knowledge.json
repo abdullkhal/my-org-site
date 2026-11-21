@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "guides": [
     {
       "id": "land-searches",
@@ -23,7 +23,10 @@
         "consumer",
         "professional"
       ],
-      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication."
+      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication.",
+      "status": "approved",
+      "baseline_review": "existing_publication",
+      "published": "2026-11-21"
     },
     {
       "id": "agents",
@@ -47,7 +50,10 @@
         "consumer",
         "professional"
       ],
-      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication."
+      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication.",
+      "status": "approved",
+      "baseline_review": "existing_publication",
+      "published": "2026-11-21"
     },
     {
       "id": "developers",
@@ -73,7 +79,10 @@
         "consumer",
         "professional"
       ],
-      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication."
+      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication.",
+      "status": "approved",
+      "baseline_review": "existing_publication",
+      "published": "2026-11-21"
     },
     {
       "id": "off-plan",
@@ -98,7 +107,10 @@
         "consumer",
         "professional"
       ],
-      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication."
+      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication.",
+      "status": "approved",
+      "baseline_review": "existing_publication",
+      "published": "2026-11-21"
     },
     {
       "id": "fraud",
@@ -122,7 +134,10 @@
         "consumer",
         "professional"
       ],
-      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication."
+      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication.",
+      "status": "approved",
+      "baseline_review": "existing_publication",
+      "published": "2026-11-21"
     },
     {
       "id": "independent-team",
@@ -148,7 +163,10 @@
         "consumer",
         "professional"
       ],
-      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication."
+      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication.",
+      "status": "approved",
+      "baseline_review": "existing_publication",
+      "published": "2026-11-21"
     },
     {
       "id": "diaspora",
@@ -174,7 +192,10 @@
         "diaspora",
         "consumer"
       ],
-      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication."
+      "claims_review": "General educational prompts. Specific official procedures, fees and coverage must be checked against first-party sources before publication.",
+      "status": "approved",
+      "baseline_review": "existing_publication",
+      "published": "2026-11-21"
     },
     {
       "id": "companies",
@@ -187,7 +208,10 @@
       "source_ids": [
         "brs",
         "lsk"
-      ]
+      ],
+      "status": "approved",
+      "baseline_review": "existing_publication",
+      "published": "2026-11-21"
     },
     {
       "id": "rental-deposit",
@@ -200,7 +224,10 @@
       "source_ids": [
         "earb",
         "lsk"
-      ]
+      ],
+      "status": "approved",
+      "baseline_review": "existing_publication",
+      "published": "2026-11-21"
     },
     {
       "id": "commercial-costs",
@@ -214,7 +241,10 @@
         "lsk",
         "vrb",
         "approvals"
-      ]
+      ],
+      "status": "approved",
+      "baseline_review": "existing_publication",
+      "published": "2026-11-21"
     },
     {
       "id": "construction-approvals",
@@ -228,7 +258,10 @@
         "approvals",
         "nca",
         "nema"
-      ]
+      ],
+      "status": "approved",
+      "baseline_review": "existing_publication",
+      "published": "2026-11-21"
     },
     {
       "id": "buying-checks",
@@ -242,7 +275,10 @@
         "lsk",
         "ardhisasa",
         "lsb"
-      ]
+      ],
+      "status": "approved",
+      "baseline_review": "existing_publication",
+      "published": "2026-11-21"
     }
   ]
 }

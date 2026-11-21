@@ -1,9 +1,18 @@
 {
   "categories": [
-    "Estate agencies", "Property developers", "Property management companies",
-    "Contractors", "Architects", "Quantity surveyors", "Land surveyors",
-    "Valuers", "Property lawyers", "Engineers", "Interior designers",
+    "Estate agencies",
+    "Property developers",
+    "Property management companies",
+    "Contractors",
+    "Architects",
+    "Quantity surveyors",
+    "Land surveyors",
+    "Valuers",
+    "Property lawyers",
+    "Engineers",
+    "Interior designers",
     "Other property-related services"
   ],
-  "profiles": []
+  "profiles": [],
+  "schema_version": 2
 }

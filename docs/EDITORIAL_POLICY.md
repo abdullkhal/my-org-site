@@ -1,0 +1,7 @@
+# Editorial policy
+
+Collect leads outside the public checkout. Move through discovery, evidence collection, editorial review, validation, approval, publication and monitoring. Retain borderline items privately as needs review, rejected or superseded. Approve only after reading the original information and confirming attribution, dates, geography, scope, limitations and practical relevance. Use the Kenya Property Brief's five sections when evidence supports them. Aim for three to five substantial stories without filling gaps with weak items. Distinguish source publication, event and PIIK publication dates. Attribute analysis and frame action as general guidance.
+
+Use deterministic validation and a passing repository review to publish low-risk approved content. Escalate allegations, consequential legal interpretations, uncertain regulatory claims and privacy issues for qualified human review. Avoid automated rankings, blacklists and wording that suggests a missing entry demonstrates wrongdoing.
+
+For errors, add a dated correction with a public explanation and link it to the affected item. Withdraw unsafe content by removing it from public indexes and retaining a minimal notice at its URL. Remove any sensitive material from the record, seek guidance for history and caches if necessary, and confirm the generated release. Revert a faulty deployment to a verified release through the usual branch process.

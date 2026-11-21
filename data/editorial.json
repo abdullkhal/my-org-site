@@ -14,7 +14,8 @@
       "source_id": "earb",
       "why": "The Estate Agents Registration Board’s 2026 Gazette publication gives you a reference for the names covered by that edition. It cannot tell you whether an agent’s status has changed since publication or whether they represent the owner of a specific property.",
       "next": "Ask for the agent’s full practising name and registration details. Match those details against the published record, check current status directly with EARB and have your independent advocate check the agent’s written authority for the property.",
-      "guide_id": "agents"
+      "guide_id": "agents",
+      "baseline_review": "existing_publication"
     },
     {
       "id": "land-search-and-site-check",
@@ -30,7 +31,8 @@
       "source_id": "ardhisasa",
       "why": "The official search route depends on the property and registry. Your advocate can interpret the record and advise on ownership, charges and restrictions. An independent visit can reveal access, occupation and boundary questions that require separate checks.",
       "next": "Ask your advocate about the official route for the parcel, then brief a licensed land surveyor about boundaries and access. Have your advisers compare their findings before you rely on representations from a seller.",
-      "guide_id": "land-searches"
+      "guide_id": "land-searches",
+      "baseline_review": "existing_publication"
     }
   ],
   "notices": [
@@ -44,7 +46,8 @@
       "region": "Kenya",
       "summary": "Use the dated estate agents register as a starting point and ask EARB separately about current status.",
       "source_id": "earb",
-      "article_id": "estate-agent-gazette"
+      "article_id": "estate-agent-gazette",
+      "baseline_review": "existing_publication"
     },
     {
       "id": "changed-payment-details",
@@ -54,7 +57,11 @@
       "date": "2026-11-21",
       "region": "Kenya",
       "summary": "Verify the change with a separately obtained contact before sending money. If you have already paid and suspect fraud, contact your payment provider promptly and seek independent legal advice.",
-      "guide_id": "fraud"
+      "guide_id": "fraud",
+      "baseline_review": "existing_publication"
     }
-  ]
+  ],
+  "schema_version": 2,
+  "editions": [],
+  "corrections": []
 }
